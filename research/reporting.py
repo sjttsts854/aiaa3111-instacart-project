@@ -52,6 +52,8 @@ def create_report(config,cache,run):
     def save(fig,name):
         fig.savefig(figdir/f"{name}.png",bbox_inches="tight")
         fig.savefig(figdir/f"{name}.svg",bbox_inches="tight")
+        svg=figdir/f"{name}.svg"
+        svg.write_text("\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines())+"\n",encoding="utf-8")
         plt.close(fig)
     names=["frequency","decay","frequency_context","frequency_recency","no_temporal","no_cadence","no_global","full"]
     fig,ax=plt.subplots(figsize=(10,5.5));y=np.arange(len(names))
