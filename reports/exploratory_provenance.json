@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-09T11:21:38.279042+00:00",
+  "status": "post-confirmation exploratory",
+  "freeze_sha256": "447749172b325da00fe84d24308ed2f86a7d7a9f8c0c796061444d6b053d09ba",
+  "reason": "covered-target improvement coexists with no overall improvement",
+  "no_new_models": true,
+  "interpretation": "arithmetic decomposition of fixed rankings; not a causal mechanism test"
+}

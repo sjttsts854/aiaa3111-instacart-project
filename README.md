@@ -2,7 +2,50 @@
 
 研究问题：个人购买习惯之外，用户分群和商品关联能否改善下一单复购预测？
 
-这是课程项目的可运行研究起点。结论以本地实际实验为准，不预设聚类、关联规则或复杂模型一定有收益。
+项目已从初始方法比较推进到固定假设、全新用户确认的解释性研究。结论以本地实际实验为准，不预设聚类、关联规则或复杂模型一定有收益。
+
+## 第二轮：信息增益与边界研究
+
+当前主要结果见 [研究证据稿](reports/research_findings.md)，完整数值在 `reports/tables/`，可直接用于展示的图表在 `reports/figures/`（PNG 与 SVG）。第一轮结果保留在本文后半部，用于说明假设的来源，不与第二轮作为独立样本混用。
+
+三个问题：近期行为与购买节奏各有多少条件增益；扩大共购规则和跨订单规则覆盖后是否有用；长历史用户的表现差异与候选规模、目标规模有什么关系。研究不以获得正结果为完成条件。
+
+第二轮排除全部第一轮用户，重新抽取 33,000 人，分为训练 20,000、验证 5,000、确认 8,000。17 种预先声明的方法共 41 个拟合/基线配置；每个学习方法重复三个种子，参数共享，不做逐模型调参。选择依据验证集三个种子的平均 Recall@10。最终确认前冻结 78 个输入、模型与评估文件。确认后不再训练或改选。
+
+预先指定 8 个主要配对比较、0.5 个百分点的实际意义阈值、6,000 次用户 bootstrap，同时报告多重比较调整区间。覆盖条件与历史分箱为探索性诊断；不宣称因果。所有学习模型表格值为三个模型的指标均值，不是集成模型。
+
+本机已经运行的缓存不能覆盖。只查看证据、重新独立核验和开启演示：
+
+```powershell
+.\.venv\Scripts\python.exe -m research.run audit
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+从头复现第二轮时，在干净副本中放入六个原始 CSV，先按下方步骤准备第一轮 10,000 人划分（只需 `run.py prepare`，用于排除已经观察的用户），再依次运行：
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m research.run prepare
+.\.venv\Scripts\python.exe -m research.run features
+.\.venv\Scripts\python.exe -m research.run develop
+.\.venv\Scripts\python.exe -m research.run freeze
+.\.venv\Scripts\python.exe -m research.run confirm
+.\.venv\Scripts\python.exe -m research.run audit
+.\.venv\Scripts\python.exe -m research.exploratory
+.\.venv\Scripts\python.exe -m research.run report
+```
+
+`freeze` 需要本地 Git 仓库和至少一次提交，用于记录来源版本。`prepare/features/freeze/confirm` 保护已有完成结果，拒绝覆盖；`develop` 仅在输入哈希一致且未冻结时可接续未完成配置。确认阶段遇到中断可接续，但完成后拒绝重跑；若协议变化，必须启用新的研究与未查看的确认数据，不能删保护文件继续优化本确认集。
+
+第二轮保留 autoresearch 的可验证迭代、固定评价、验证选择、独立确认与完整日志；`research-results.tsv` 记录各方法是否改善验证均值。因为这是预先声明的消融研究，即便均值未改善也保留对应模型供比较。第一轮使用的逐提交保留/撤销循环保持不变。
+
+`research/` 中：`protocol.json` 固定问题和统计计划；`data.py` 构建新划分；`patterns.py` 计算精确二项规则与跨订单规则；`features.py` 生成规则与聚类特征；`models.py` 定义信息组消融；`experiment.py` 隔离验证与确认；`analysis.py` 负责预定统计；`auditing.py` 从原始 CSV 独立重建候选与标签；`reporting.py` 生成表图和证据稿。运行目录为 `autoresearch/research-v2/`。
+
+`research/exploratory.py` 是看到确认集覆盖内收益后增加的事后诊断：只分解已经冻结排序的命中变化，不拟合、不重选。与事先声明的主要比较分开标注，时间与动机保存在 `reports/exploratory_provenance.json`。本机依赖版本见 `requirements-study-lock.txt`。22 项协议测试以及 `scripts/check_demo.py` 的正常/无复购目标演示检查均已通过。
+
+已确认的核心证据：近期衰减频次比累计频次提高 3.73 个百分点；本次购买节奏特征没有额外增益，全局商品统计有约 0.50 个百分点的小幅增益；规则的局部收益未转为总体收益；在规模重叠人群中统一候选数与目标数的分箱权重后，历史长度组的原始表现排序反转。它们是预测与评价层面的发现，不是购买行为的因果结论。
+
+演示自动优先展示第二轮独立确认结果，购物清单显示验证选定方法的种子 42 单个模型。研究标签页解释统计区间、历史长度混杂和复购/整篮指标的区别。
 
 ## 环境与运行
 

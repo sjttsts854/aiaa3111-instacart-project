@@ -1,0 +1,62 @@
+{
+  "cells": 11,
+  "included_users": 5882,
+  "nonempty_users": 7486,
+  "cell_weights": [
+    {
+      "candidate_bin": "(0, 20]",
+      "target_bin": "(0, 3]",
+      "weight": 0.16099965997959878
+    },
+    {
+      "candidate_bin": "(0, 20]",
+      "target_bin": "(3, 7]",
+      "weight": 0.05049302958177491
+    },
+    {
+      "candidate_bin": "(20, 50]",
+      "target_bin": "(0, 3]",
+      "weight": 0.17562053723223395
+    },
+    {
+      "candidate_bin": "(20, 50]",
+      "target_bin": "(3, 7]",
+      "weight": 0.1504590275416525
+    },
+    {
+      "candidate_bin": "(20, 50]",
+      "target_bin": "(7, 10]",
+      "weight": 0.05576334580074804
+    },
+    {
+      "candidate_bin": "(20, 50]",
+      "target_bin": "(10, 20]",
+      "weight": 0.035532131927915676
+    },
+    {
+      "candidate_bin": "(50, 100]",
+      "target_bin": "(0, 3]",
+      "weight": 0.08840530431825909
+    },
+    {
+      "candidate_bin": "(50, 100]",
+      "target_bin": "(3, 7]",
+      "weight": 0.1259775586535192
+    },
+    {
+      "candidate_bin": "(50, 100]",
+      "target_bin": "(7, 10]",
+      "weight": 0.060183611016661
+    },
+    {
+      "candidate_bin": "(50, 100]",
+      "target_bin": "(10, 20]",
+      "weight": 0.08483509010540632
+    },
+    {
+      "candidate_bin": "(50, 100]",
+      "target_bin": "(20, 1000000]",
+      "weight": 0.011730703842230534
+    }
+  ]
+}

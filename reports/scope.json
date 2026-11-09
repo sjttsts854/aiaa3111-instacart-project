@@ -1,0 +1,9 @@
+{
+  "users": 8000,
+  "empty_repeat_targets": 514,
+  "candidate_recall_ceiling_macro": 0.5996717704226165,
+  "candidate_recall_ceiling_micro": 0.5963389096727136,
+  "full_model_whole_basket_recall_at_10": 0.35105096161837923,
+  "full_model_repeat_recall_at_10": 0.5783338646709262,
+  "note": "primary metric excludes empty repeat targets; whole-basket recall includes all users"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "frozen_files": 78,
+  "raw_sources": 6,
+  "previous_user_overlap": 0,
+  "confirmation_users": 8000,
+  "candidate_rows_checked": 522174,
+  "raw_target_rows_checked": 85002,
+  "independent_metrics": [
+    {
+      "model": "co_wide",
+      "seed": 42,
+      "independent_recall": 0.577368816949157
+    },
+    {
+      "model": "co_wide",
+      "seed": 73,
+      "independent_recall": 0.5775366448365278
+    },
+    {
+      "model": "co_wide",
+      "seed": 123,
+      "independent_recall": 0.578919630135523
+    },
+    {
+      "model": "frequency",
+      "seed": 42,
+      "independent_recall": 0.5165130198647255
+    },
+    {
+      "model": "full",
+      "seed": 42,
+      "independent_recall": 0.5786820346922824
+    },
+    {
+      "model": "full",
+      "seed": 73,
+      "independent_recall": 0.5791797235278461
+    },
+    {
+      "model": "full",
+      "seed": 123,
+      "independent_recall": 0.5771398357926504
+    }
+  ],
+  "scope": "raw CSV target/candidate reconstruction, target chronology, ranking and four per-user metrics; frozen hashes"
+}

@@ -1,0 +1,8 @@
+{
+  "selected": "co_wide",
+  "selected_cluster": "cluster6",
+  "selected_window": "window10",
+  "validation_recall": 0.5744268269538217,
+  "criterion": "maximum validation recall averaged over training seeds; no confirmation feedback",
+  "metric_aggregation": "mean of per-seed metrics, not an ensemble"
+}
