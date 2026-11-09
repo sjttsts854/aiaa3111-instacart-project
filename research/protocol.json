@@ -1,0 +1,50 @@
+{
+  "study": "information_gain_and_boundaries_v2",
+  "questions": [
+    "Which information families add predictive value beyond personal frequency?",
+    "Do broader co-occurrence or cross-order associations help, including where rules cover the targets?",
+    "How much of the long-history difficulty is associated with candidate and target-set size?"
+  ],
+  "excluded_users": "data/processed/10k_seed42/splits.csv",
+  "split_seed": 20261109,
+  "train_users": 20000,
+  "validation_users": 5000,
+  "confirmation_users": 8000,
+  "model_seeds": [42, 73, 123],
+  "primary_k": 10,
+  "sensitivity_k": [5, 20],
+  "primary_metric": "macro recall among users with nonempty repeat targets",
+  "selection": "maximum validation recall averaged over training seeds; no confirmation feedback",
+  "meaningful_improvement": 0.005,
+  "primary_contrasts": [
+    ["decay", "frequency"],
+    ["full", "decay"],
+    ["full", "no_temporal"],
+    ["full", "no_cadence"],
+    ["full", "no_global"],
+    ["co_wide", "full"],
+    ["sequential", "full"],
+    ["selected_cluster", "full"]
+  ],
+  "bootstrap_replicates": 6000,
+  "primary_interval": "paired user bootstrap; 95% marginal and Bonferroni simultaneous percentile intervals over 8 contrasts",
+  "rule_settings": {
+    "co_narrow": {"top_n": 500, "min_support": 0.002, "min_count": 30, "min_confidence": 0.0, "min_lift": 1.1, "max_outgoing": null},
+    "co_wide": {"top_n": 2000, "min_support": 0.0002, "min_count": 30, "min_confidence": 0.02, "min_lift": 1.1, "max_outgoing": 50},
+    "sequential": {"top_n": 2000, "min_support": 0.0002, "min_count": 30, "min_confidence": 0.02, "min_lift": 1.1, "max_outgoing": 50}
+  },
+  "clustering_k": [3, 6, 10],
+  "clustering_seeds": [42, 73, 123],
+  "rule_primary_scope": "cross-product rules only; exclude self transitions; fit on train prior only",
+  "rule_diagnostics": "covered-target Recall@10 with original full candidate rankings, and user coverage strata; exploratory",
+  "history_diagnostics": {
+    "groups": [3, 6, 16, 101],
+    "candidate_bins": [0, 20, 50, 100, 200, 1000000],
+    "target_bins": [0, 3, 7, 10, 20, 1000000],
+    "common_support_min_per_history_group": 10,
+    "count_windows": [3, 5, 10, "all"],
+    "interpretation": "standardization is descriptive; within-user counting-window comparison keeps the full historical candidate set fixed and is not a new-user simulation"
+  },
+  "freeze_before_confirmation": ["code", "protocol", "model artifacts", "validation selection", "data split", "training and validation summaries"],
+  "stop_rule": "complete every declared comparison, independent audits, evidence-backed writeup and demo; no requirement that hypotheses be positive"
+}
