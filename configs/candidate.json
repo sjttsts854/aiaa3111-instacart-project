@@ -1,5 +1,5 @@
 {
-  "family": "decay",
+  "family": "logistic",
   "clusters": false,
   "rules": false
 }
