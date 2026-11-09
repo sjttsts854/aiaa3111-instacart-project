@@ -1,5 +1,5 @@
 {
   "family": "lightgbm",
-  "clusters": true,
-  "rules": true
+  "clusters": false,
+  "rules": false
 }
