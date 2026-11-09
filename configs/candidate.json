@@ -1,5 +1,5 @@
 {
-  "family": "logistic",
+  "family": "lightgbm",
   "clusters": false,
   "rules": false
 }
