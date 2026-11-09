@@ -5,6 +5,7 @@ from research.data import fresh_split
 from research.patterns import pair_rules,score_rules
 from research.models import columns, RECENCY, CADENCE, INTERACTION
 from basketlab.enrichment import fit_rules
+from research.analysis import paired_interval, common_support
 
 
 def test_fresh_confirmation_excludes_every_initial_user():
@@ -60,3 +61,21 @@ def test_no_temporal_ablation_removes_recency_proxies():
     cols=columns("no_temporal",pd.DataFrame())
     assert not set(cols)&set(RECENCY+CADENCE+INTERACTION+["first_purchase","last_purchase"])
     assert not set(columns("no_cadence",pd.DataFrame()))&set(CADENCE+INTERACTION)
+
+
+def test_paired_interval_pairs_users_and_excludes_empty_targets():
+    a=pd.DataFrame({"user_id":[3,2,1],"recall":[np.nan,.6,.4]})
+    b=pd.DataFrame({"user_id":[1,2,3],"recall":[.2,.4,np.nan]})
+    r=paired_interval(a,b,n_boot=200)
+    assert r["users"]==2
+    np.testing.assert_allclose([r["delta"],r["sim_low"],r["sim_high"]],.2)
+
+
+def test_standardization_removes_pure_cell_composition_difference():
+    rows=[]
+    for group,n_easy,n_hard in [("3-5",40,10),("6-15",25,25),("16+",10,40)]:
+        rows += [{"history_group":group,"candidate_bin":"small","target_bin":"a","recall":.8}]*n_easy
+        rows += [{"history_group":group,"candidate_bin":"large","target_bin":"a","recall":.2}]*n_hard
+    standardized,info=common_support(pd.DataFrame(rows),10)
+    assert info["included_users"]==150 and info["cells"]==2
+    np.testing.assert_allclose(standardized.standardized_recall,.5)
