@@ -1,0 +1,10 @@
+archive/
+.venv/
+tmp/
+__pycache__/
+.pytest_cache/
+*.pyc
+data/processed/
+outputs/
+autoresearch/loop-*/
+.streamlit/

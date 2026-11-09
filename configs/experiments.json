@@ -1,0 +1,10 @@
+[
+  {"name": "personal_frequency", "hypothesis": "Personal item frequency is the strong initial baseline.", "config": {"family": "frequency", "clusters": false, "rules": false}},
+  {"name": "last_basket_first", "hypothesis": "Recent basket membership adds useful recency.", "config": {"family": "recent", "clusters": false, "rules": false}},
+  {"name": "decayed_frequency", "hypothesis": "Smooth recency weighting improves ranking.", "config": {"family": "decay", "clusters": false, "rules": false}},
+  {"name": "logistic", "hypothesis": "Combining history features linearly improves recall.", "config": {"family": "logistic", "clusters": false, "rules": false}},
+  {"name": "lightgbm_base", "hypothesis": "Nonlinear history interactions improve recall.", "config": {"family": "lightgbm", "clusters": false, "rules": false}},
+  {"name": "lightgbm_clusters", "hypothesis": "User segments add signal beyond personal history.", "config": {"family": "lightgbm", "clusters": true, "rules": false}},
+  {"name": "lightgbm_rules", "hypothesis": "Historical same-basket associations transfer to next-basket prediction.", "config": {"family": "lightgbm", "clusters": false, "rules": true}},
+  {"name": "lightgbm_both", "hypothesis": "Segments and associations provide complementary signal.", "config": {"family": "lightgbm", "clusters": true, "rules": true}}
+]
