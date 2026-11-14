@@ -1,0 +1,63 @@
+History-length comparison: predeclared robustness and methodological review
+
+Implementation: study3/history.py
+Public API: analyze_history(per_user_df, candidate_frame, outputdir,
+                           n_boot=1000, seed=20261114,
+                           dataset_label="confirmation_v3")
+Per-user fields: user_id, recall, repeat_targets; average repeated model seeds
+within each user before calling. Candidate fields: user_id, history_orders,
+optional product_id. Pass ALL historical candidates for exactly those users.
+
+Six specifications (fixed before new study confirmation):
+* Original: candidate bins 0,20,50,100,200,1000000;
+            target bins 0,3,7,10,20,1000000.
+* Finer: candidate bins 0,10,20,35,50,75,100,150,200,1000000;
+         target bins 0,2,4,6,10,15,25,1000000.
+* Coarser: candidate bins 0,30,75,150,1000000;
+           target bins 0,5,10,20,1000000.
+Each binning uses minimum 10 and 20 users per history group per cell.
+History groups: 3-5, 6-15 and 16+ observed prior orders.
+No specification is selected based on a favorable result.
+
+Outputs separate three comparisons:
+1. Raw means over all users with nonempty repeat targets.
+2. Raw means over the exact common-support users used in standardization.
+3. Means of per-cell Recall weighted by the pooled common-support cell sizes,
+   with the SAME cell weights used for every history group.
+
+The raw overall to raw common-support shift reflects sample restriction.
+The raw common-support to standardized shift reflects changed cell weights.
+These are exact arithmetic decompositions, not causal mediation effects.
+
+Bootstrap: independent sampling with replacement WITHIN every history-by-size
+cell, using 1,000 replicates and fixed observed support, cell sample sizes and
+pooled weights. Report percentile marginal 95% intervals on long-minus-short.
+The intervals condition on the fitted models and do not cover re-estimating
+support/weights, retraining or model selection. The six sensitivity intervals
+are not six independent confirmatory tests.
+
+Review of the prior v2 result (exploratory; inspected 2026-11-14):
+The original arithmetic is reproducible and correct. There is no evidence here
+of an implementation bug. However, the common-support restriction retains
+1,243/2,542 nonempty long-history users versus 1,992/2,032 short-history users.
+Therefore, its adjusted chart describes a materially different population.
+
+The six-specification posthoc rerun of v2 gives standardized long-minus-short
+differences from +10.32 to +14.82 percentage points, with every marginal lower
+interval bound above zero. All six reverse the raw overall -19.17 pp contrast.
+But the finer/min20 common-support raw contrast is already +0.38 pp (interval
+contains zero); this specification does NOT reverse direction solely through
+reweighting. Do not imply that all of the overall reversal is due to weights.
+Across specifications, retained nonempty users range from 4,197 to 5,882 out
+of 7,486. Full exploratory output: outputs/study3_history_v2_exploratory/.
+
+Interpretation limits:
+* The next basket's repeat-target count is future/outcome information. It is
+  used only in retrospective evaluation; it cannot be a prediction-time input.
+* Conditioning on target size can induce selection effects. Coarse bins leave
+  residual within-cell differences. This is not causal adjustment.
+* Evidence of stable standardized direction supports caution about aggregate
+  user-group comparisons. It does not prove that acquiring more history will
+  improve recommendations by that amount.
+* V2 reruns remain exploratory. Independent new-user confirmation with a new
+  training sample strengthens replication but is still one platform/dataset.
