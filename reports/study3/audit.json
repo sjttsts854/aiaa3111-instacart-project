@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "frozen_files": 58,
+  "raw_source_files": 6,
+  "previous_users_excluded": 43000,
+  "previous_user_overlap": 0,
+  "confirmation_users": 8000,
+  "confirmation_candidate_rows": 523759,
+  "confirmation_target_rows": 84566,
+  "empty_repeat_targets": 532,
+  "tifu_training_banks_checked": 2,
+  "prediction_configurations_checked": 16,
+  "quota_user_seed_checks": 24000,
+  "quota_count_mismatches": 0,
+  "independent_metrics": [
+    {
+      "name": "frequency",
+      "seed": 42,
+      "independent_recall": 0.5137904345021632
+    },
+    {
+      "name": "decay",
+      "seed": 42,
+      "independent_recall": 0.5544798447073144
+    },
+    {
+      "name": "full",
+      "seed": 42,
+      "independent_recall": 0.575584008024165
+    },
+    {
+      "name": "full",
+      "seed": 73,
+      "independent_recall": 0.5765573698591483
+    },
+    {
+      "name": "full",
+      "seed": 123,
+      "independent_recall": 0.574830879444812
+    },
+    {
+      "name": "co_narrow",
+      "seed": 42,
+      "independent_recall": 0.5743022035074004
+    },
+    {
+      "name": "co_narrow",
+      "seed": 73,
+      "independent_recall": 0.573906883654781
+    },
+    {
+      "name": "co_narrow",
+      "seed": 123,
+      "independent_recall": 0.5741579929084207
+    },
+    {
+      "name": "no_cadence",
+      "seed": 42,
+      "independent_recall": 0.5742702613268382
+    },
+    {
+      "name": "no_cadence",
+      "seed": 73,
+      "independent_recall": 0.5740492110476713
+    },
+    {
+      "name": "no_cadence",
+      "seed": 123,
+      "independent_recall": 0.574334922899668
+    },
+    {
+      "name": "quota",
+      "seed": 42,
+      "independent_recall": 0.575584008024165
+    },
+    {
+      "name": "quota",
+      "seed": 73,
+      "independent_recall": 0.5765573698591483
+    },
+    {
+      "name": "quota",
+      "seed": 123,
+      "independent_recall": 0.574830879444812
+    },
+    {
+      "name": "tifu",
+      "seed": 42,
+      "independent_recall": 0.5560544743922017
+    },
+    {
+      "name": "tifu_self",
+      "seed": 42,
+      "independent_recall": 0.5499612998198603
+    }
+  ],
+  "scope": "raw source hashes, disjoint users, chronology, all historical candidates, raw labels, validation selections, training-only TIFU banks, exact ranking, four per-user metrics, seed aggregation and quota exposures"
+}

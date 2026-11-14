@@ -1,0 +1,11 @@
+History-length sensitivity analysis
+
+Compare 3-5, 6-15 and 16+ observed orders. Average model-seed metrics within users first. Exclude empty repeat targets only from Recall analyses, while reporting their counts. Count every historical candidate row, rather than only scored top-K rows.
+
+Use the three fixed candidate/target bin definitions in specifications.json, each with minimum cell counts of 10 and 20 in EVERY history group. Report all six specifications. Common support is the intersection of cells meeting this condition in all three groups. The pooled frequency of retained users determines identical cell weights for every group.
+
+Report raw means for all nonempty users; raw means on the retained common-support users; and standardized means on those SAME retained users. Counts and retention fractions expose sample selection separately from the reweighting. The two descriptive shifts add exactly to the total change in the long-minus-short contrast; neither shift is a causal explanation.
+
+For each specification, run 1000 bootstrap repetitions resampling users WITHIN each history-group-by-candidate-bin-by-target-bin cell. Keep support, pooled weights and cell sample sizes fixed. Use percentile marginal 95% intervals for standardized and common-support raw long-minus-short contrasts. These intervals do not include uncertainty from finding the support, estimating pooled weights, choosing bins or retraining models. Six-specification intervals are sensitivity diagnostics, not six independent confirmatory discoveries.
+
+Target basket size is outcome information used only for retrospective analysis. Conditioning on it can introduce selection effects. Coarse bins leave residual within-cell differences. The result is not a causal history-length effect or a prospective user-matching method. A direction reversal can support caution about aggregate comparisons; it cannot establish that additional history causes better recommendations. An old study rerun remains exploratory; new users with a new fitted training sample provide a limited independent replication.

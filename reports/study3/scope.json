@@ -1,0 +1,8 @@
+{
+  "users": 8000,
+  "nonempty_users": 7468,
+  "repeat_target_candidate_coverage": 0.5989925506344298,
+  "whole_basket_recall": 0.3489916214679109,
+  "covered_candidate_fraction": 0.09746658291313372,
+  "covered_target_fraction": 0.19313968474273818
+}

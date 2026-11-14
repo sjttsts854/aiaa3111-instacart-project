@@ -1,0 +1,17 @@
+{
+  "quota_weight": 0.0,
+  "tifu": {
+    "settings_index": 1,
+    "neighbors": 300,
+    "alpha": 0.5,
+    "recall": 0.5590929961637643
+  },
+  "tifu_settings": {
+    "group_count": 7,
+    "within_decay": 0.9,
+    "group_decay": 0.7,
+    "implementation": "author_code"
+  },
+  "selected_before_confirmation": true,
+  "utc": "2026-11-14T07:14:35.779327+00:00"
+}

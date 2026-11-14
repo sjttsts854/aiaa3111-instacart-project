@@ -49,8 +49,30 @@ def load_tables(cache_path, run_path, study, selected_name):
 
 
 data = load_tables(str(cache),str(run),is_study,selected["name"])
-tabs = st.tabs(["研究发现", "购物清单演示", "实验结果与边界"])
+tabs = st.tabs(["最新补充研究", "购物清单演示", "第二轮实验结果", "第二轮研究发现"])
 with tabs[0]:
+    extension=ROOT/"reports/study3"
+    if (extension/"research_extension.md").exists():
+        latest=ROOT/"autoresearch/research-v3"
+        m=pd.read_csv(latest/"confirmation/metrics.csv").set_index('name')
+        st.subheader("群体信息是否有用，取决于怎样使用")
+        st.write("第三轮排除此前 43,000 名用户，再抽取 33,000 名用户：20,000 训练、5,000 验证、8,000 独立确认。方法与比较在确认前固定。")
+        a,b,c=st.columns(3)
+        a.metric("时间频次 · 个人历史",f"{m.loc['tifu_self','recall_at_10']:.2%}")
+        b.metric("TIFU-KNN · 加入邻居",f"{m.loc['tifu','recall_at_10']:.2%}")
+        c.metric("完整历史特征模型",f"{m.loc['full','recall_at_10']:.2%}")
+        st.caption("均为最多推荐 10 件的复购召回率。TIFU 的个人历史对照使用相同时间权重；学习模型显示三个种子的指标均值。")
+        st.image(str(extension/"figures/primary_contrasts.png"))
+        st.write("邻居信息相对 TIFU 的个人历史对照产生小幅增益；共购规则相对较强的完整模型未取得收益。两者使用的个人基线不同，不能只把差异归因于表示方式，也不能说所有群体信息都无效。")
+        st.image(str(extension/"figures/history_sensitivity.png"))
+        st.write("六套分组设置都检查了三种比较：全体用户、规模重叠的同一批用户、这批用户统一权重后。排除用户与重新加权都改变结果；这些是描述性诊断，不是历史长度的因果效应。")
+        st.warning("需要修正第二轮解释：规则覆盖内的局部收益未在新用户中稳定复现。")
+        st.image(str(extension/"figures/quota_diagnostic.png"))
+        st.write("为减少规则挤占推荐名额，尝试保留原模型的覆盖名额再排序。验证集选择不启用该改动，因此不能宣称新方法提高了预测表现。")
+        st.download_button("下载补充研究证据稿",(extension/"research_extension.md").read_text(encoding='utf-8'),file_name='research_extension.md',mime='text/markdown')
+    else:
+        st.info("补充研究证据稿尚未生成；已完成的第二轮研究在其他标签页。")
+with tabs[3]:
     if (ROOT/"reports/research_findings.md").exists() and is_study:
         scope=json.loads((run/"confirmation/scope.json").read_text(encoding="utf-8"))
         metrics=data["metrics"].set_index("name")
@@ -70,6 +92,7 @@ with tabs[0]:
     else:
         st.write("第一轮已验证基础流程。更完整的研究分析尚未生成。")
 with tabs[1]:
+    st.caption("本页保留第二轮验证选定模型的购物清单案例；最新基线与稳健性结果见第一个标签页。")
     ids = data["per_user"].user_id.sort_values().astype(int).tolist()
     user = st.selectbox("选择留出的测试用户",ids)
     profile = data["users"].set_index("user_id").loc[user]

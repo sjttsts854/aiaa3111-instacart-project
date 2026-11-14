@@ -4,6 +4,39 @@
 
 项目已从初始方法比较推进到固定假设、全新用户确认的解释性研究。结论以本地实际实验为准，不预设聚类、关联规则或复杂模型一定有收益。
 
+## 第三轮补充研究（2026-11-14）
+
+最新证据见 [领域基线、历史长度稳健性与名额约束实验](reports/study3/research_extension.md)。第二轮证据保留供追溯，解释以新报告中的复现与修正为准。
+
+本轮排除此前 43,000 人，用全新 33,000 人重新划分为训练 20,000 / 验证 5,000 / 确认 8,000。补充作者代码语义的 TIFU-KNN（24 个有界验证配置，包含论文 Instacart 参数），训练用户专属邻居库，统一历史候选；与同时间权重的个人历史对照、公平训练的 LightGBM 比较。实现与论文文本存在已记录的差异，不能把本任务指标与论文整篮分数直接比较。来源及细节见 `study3/tifu_sources.md`。
+
+历史长度诊断使用预定的 3 套分箱 × 2 个最低人数阈值，并在完整模型、个人频次和 TIFU 上检查；分别报告全体原始差异、同一重叠人群原始差异、统一权重后的差异及条件 bootstrap 区间。这避免把样本排除的影响都归给重新加权。
+
+特色方法尝试为覆盖名额约束重排：固定原模型清单中的规则覆盖/未覆盖数量，在两组内重新排序。验证权重 0/0.25/0.5/1，选中 0，即不启用改动。因此保留失败实验，不把确认集与基础模型恒等的结果包装成新方法成功。它也不能独立证明所有非零权重都无效。
+
+结果要点：TIFU 邻居信息相对其个人历史对照提升 0.61 个百分点，完整特征模型再高 1.96 个百分点；历史长度的标准化方向在新数据六套设置下稳定；第二轮规则覆盖内的小幅收益未稳定复现。新结果进一步限定了贡献：群体信息的增量价值需要连同已有个人基线一起讨论；TIFU 与规则使用的个人基线强弱不同，不能将差异仅归因于表示方式。历史长度分组指标必须检查比较总体。
+
+本机查看/核验：
+
+```powershell
+.\.venv\Scripts\python.exe -m study3.run audit
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+从干净副本复现：先完成旧两轮的 `prepare` 生成排除用户清单，再依次执行下列命令。旧轮实验无需重新训练；第二轮准备需按原方案生成 33,000 用户划分。
+
+```powershell
+.\.venv\Scripts\python.exe -m study3.prepare
+.\.venv\Scripts\python.exe -m pytest -q tests study3_tests
+.\.venv\Scripts\python.exe -m study3.run develop
+.\.venv\Scripts\python.exe -m study3.run freeze
+.\.venv\Scripts\python.exe -m study3.run confirm
+.\.venv\Scripts\python.exe -m study3.run audit
+.\.venv\Scripts\python.exe -m study3.run report
+```
+
+缓存 `data/processed/study3/`；完整运行记录 `autoresearch/research-v3/`；小型证据与图 `reports/study3/`。代码、规则、模型、数据及选择在确认前冻结；已完成确认不允许覆盖。冻结文件之后不得改写用于复现旧结果的源码。报告代码与展示可单独更新。学习模型取三个种子的指标均值，TIFU 为确定性方法。运行研究无需为原始数据或模型建立公开仓库。
+
 ## 第二轮：信息增益与边界研究
 
 当前主要结果见 [研究证据稿](reports/research_findings.md)，完整数值在 `reports/tables/`，可直接用于展示的图表在 `reports/figures/`（PNG 与 SVG）。第一轮结果保留在本文后半部，用于说明假设的来源，不与第二轮作为独立样本混用。

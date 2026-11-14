@@ -1,0 +1,21 @@
+{
+  "dataset": "fresh_v3_frequency",
+  "specifications": 6,
+  "evaluable_specifications": 6,
+  "users": 8000,
+  "nonempty_users": 7468,
+  "all_six_evaluable": true,
+  "same_nonzero_direction_in_all_six": true,
+  "all_six_standardized_positive": true,
+  "all_six_standardized_ci_lower_positive": true,
+  "all_six_reversed_from_overall": true,
+  "all_six_reversed_within_common_support": false,
+  "standardized_delta_min": 0.07886017179769078,
+  "standardized_delta_max": 0.1266199835959546,
+  "retained_user_min": 4484,
+  "retained_user_max": 6595,
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20261114,
+  "interval_scope": "marginal 95%; conditional on observed support, fixed pooled weights, fitted models, and per-cell sample sizes",
+  "interpretation": "descriptive robustness only; no causal effect, no selection of a preferred sensitivity specification"
+}
