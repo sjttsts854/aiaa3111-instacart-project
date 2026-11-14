@@ -1,0 +1,16 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+The empirical contribution is a fixed-target comparison of historical scoring and candidate eligibility, with exact hit accounting and matched-budget controls. The findings constrain candidate reduction to the tested scoring model and recommendation depth. Average noninferiority does not protect every user or preserve target coverage. Negative rule results, the inactive quota proposal, and the competitive recency control remain part of the evidence.
+
+Several limits constrain generalization. We study one historical platform and one terminal order per evaluated user, without an online user study, prices, or absolute calendar dates. Recommendations are restricted to previously purchased products. Standardization uses coarse bins and common support, and its intervals condition on that support and the existing fitted model. Three seeds do not replace retraining on new training samples. The individual-user and list-depth analyses are posthoc. No measured runtime, storage, sales, or satisfaction improvement is claimed. A stronger ranker could increase the value of the currently low-ranked excluded targets.
+
+Future work should place selection before expensive scoring, measure runtime and memory, and evaluate new users or independent time periods. Adapting pools to recommendation depth or user characteristics requires a new selection-and-confirmation cycle; these improvements are not established here.
+
+\section{Conclusion}
+History supplies both ranking signals and eligible competitors. Separating these roles reveals opposite effects of old candidates under frequency and time decay. A frozen policy reduces candidate volume by 44.79\% while retaining average Recall@10 within a prespecified 0.5-point tolerance. Most short lists remain unchanged, but longer lists expose excluded targets. Candidate reduction must therefore be evaluated with fixed targets, matched-budget controls, and its intended recommendation depth.
+
+\section*{Reproducibility and AI Assistance Disclosure}
+The project preserves protocols, disjoint user splits, source hashes, validation choices, frozen predictions, evidence tables, and independent computational audits. The main study checks raw baskets and fixed-target evaluation; the follow-up reproduces rankings, hit ledgers, and intervals. The packaged research test suite passes 108 tests. These checks support implementation consistency, not external generalization. The separate source-and-evidence package README distinguishes inspecting saved evidence from reproducing full-data preparation and fitting; a clean rerun is not promised to yield byte-identical model files.
+
+OpenAI Codex assisted research design, implementation, experiment execution, analysis, visualization, and drafting. Automated tests and computational checks were performed, but team review is still required. This document is a team review draft and does not imply that students independently authored or verified all content. Before submission, the team must review the work, revise the final expression based on its own understanding, verify references, supply actual member identities and contributions, and disclose assistance according to the course policy.

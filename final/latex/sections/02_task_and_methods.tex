@@ -1,0 +1,81 @@
+\section{Task and Evidence Design}
+\label{sec:task}
+
+\subsection{Data and prediction boundary}
+The public Instacart dataset contains 206,209 users, 3,421,083 orders, and 49,688 products. Six CSV files provide order sequences, basket contents, and product metadata~\citep{instacart2017,kaggle}. The eligible labeled population comprises 131,209 users whose terminal order has released product labels; our study cohorts are sampled from this population. Earlier orders form each user's observed history. Prediction takes place after the last historical order, before any metadata from the terminal order is available.
+
+Let $\C_{\mathrm{all}}(u)$ be the set of products purchased in user $u$'s observed history and $B_{\mathrm{next}}(u)$ the terminal basket. The fixed repeat-target set is
+\begin{equation}
+  \R(u)=B_{\mathrm{next}}(u)\cap\C_{\mathrm{all}}(u).
+  \label{eq:target}
+\end{equation}
+A policy $p$ selects an eligible subset $\C_p(u)\subseteq\C_{\mathrm{all}}(u)$ and returns up to $K$ ranked products, denoted $\TopItems_{K,p}(u)$. For $\R(u)\ne\varnothing$,
+\begin{equation}
+  \Recall@K(u,p)=\frac{|\TopItems_{K,p}(u)\cap\R(u)|}{|\R(u)|},\qquad
+  \overline{\Recall}@K(p)=\frac{1}{|\Uplus|}\sum_{u\in\Uplus}\Recall@K(u,p),
+  \label{eq:recall}
+\end{equation}
+where $\Uplus$ contains users with nonempty full-history repeat targets. Excluded true products remain in $\R(u)$ and can therefore remain misses. Candidate pruning never changes the targets or user population.
+
+The main confirmation sample has 8,000 users, including 528 with empty repeat targets. Thus 7,472 contribute to macro recall and NDCG. Empty-target users remain in counts, precision, and F1; their recall is undefined rather than zero. We also record hits divided by $K$, actual recommendation length, candidate coverage, and the candidate-constrained Top-$K$ oracle. This distinguishes changes in eligibility and returned list length from changes in achieved retrieval.
+
+\subsection{Separate exploration from confirmation}
+Table~\ref{tab:cohorts} summarizes the evidence stages. The four user cohorts are mutually disjoint. The final memory study excludes all 76,000 users used in earlier stages before sampling a fresh cohort of 33,000. Scores from different cohorts are not interpreted as a chronological improvement curve. The follow-up uses completed confirmation predictions and is not an additional independent test.
+
+\begin{table}[tbp]
+  \centering
+  \caption{Evidence stages and user counts. The posthoc follow-up reuses the final confirmation cohort without fitting new models or choosing a new policy.}
+  \label{tab:cohorts}
+  \small
+  \begin{tabularx}{\linewidth}{@{}lrrrX@{}}
+    \toprule
+    Stage & Training & Validation & Held out & Role \\
+    \midrule
+    Initial study & 7,000 & 1,500 & 1,500 & Pipeline and hypotheses \\
+    Information study & 20,000 & 5,000 & 8,000 & Feature comparisons \\
+    Baseline extension & 20,000 & 5,000 & 8,000 & TIFU and robustness \\
+    Memory study & 20,000 & 5,000 & 8,000 & Main confirmation \\
+    Posthoc follow-up & --- & --- & Same 8,000 & Interpretation and scope \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Global statistics, clustering, association rules, and neighbor banks use training users' historical data only. Held-out users supply their own past purchases and do not enter other held-out users' neighbor banks. No terminal-order day, hour, or interval enters a predictor. All historical products are candidates before policy filtering, with no negative sampling. Absolute calendar dates and prices are absent, and inter-order gaps are capped at 30 days. The experiment is therefore a within-user chronological evaluation, not a global calendar backtest or spending analysis.
+
+\section{Methods and Evaluation}
+\label{sec:methods}
+
+\subsection{Separate scoring history from eligibility}
+The core $2\times2$ design crosses the history used for scoring (recent five orders or all observed orders) with eligible candidates (products in the recent five orders or all historical products). Every cell knows the complete historical catalog and uses the same terminal targets. The experiment changes the algorithmic use of history, not how much history the user actually possesses.
+
+For a product $i$, let $x_{u,i,t}$ indicate its presence in historical order $t$, let $T_u$ be the last observed order, and let $\mathcal{W}_u$ be the selected scoring window. Frequency and time-decayed scores are
+\begin{equation}
+ s_{\mathrm{freq}}(u,i)=\sum_{t\in\mathcal{W}_u}x_{u,i,t},\qquad
+ s_{\mathrm{decay}}(u,i)=\sum_{t\in\mathcal{W}_u}0.8^{T_u-t}x_{u,i,t}.
+ \label{eq:scores}
+\end{equation}
+Age is measured in orders; age zero is the latest observed order. Purchases outside a recent scoring window contribute zero. The primary factorial population has at least 16 historical orders and nonempty repeat targets: the same 2,526 users in all cells. Windows of three and ten orders are sensitivity settings.
+
+The \emph{information contrast} adds old purchases to scoring while fixing the full candidate pool. The \emph{expansion contrast} enlarges the pool while keeping all-history scores fixed. We also report the interaction, namely the difference in the information contrast between full and recent candidate pools. Recent-window scores are zero for products outside that window. When the recent pool already contains at least $K$ positive-score products, adding zero-score old products cannot affect the Top~$K$. Some interaction structure is therefore built into the design and should not be interpreted as an unexpected behavioral discovery.
+
+\subsection{Learned ranking and candidate policies}
+A LightGBM classifier~\citep{ke2017} scores user--product pairs using frequency, recency, basket history, purchase-gap, product, and department-affinity features. The fixed settings are 240 trees, learning rate 0.05, 31 leaves, minimum child size 80, feature fraction 0.9, and an L2 penalty of 1. Models use seeds 42, 73, and 123. Policies share each fitted model's scores. We average metrics within each user across seeds before paired analysis; this is not an ensemble of prediction scores.
+
+The selective pool keeps every product from the recent five orders and adds up to $M$ older products. Older products are ordered by all-history purchase count, then recency, then product ID. Writing $\C_5(u)$ for the recent pool and $\mathcal{O}_M(u)$ for the first $M$ ranked products in $\C_{\mathrm{all}}(u)\setminus\C_5(u)$,
+\begin{equation}
+ \C_{\mathrm{selected}}(u;M)=\C_5(u)\cup\mathcal{O}_M(u).
+ \label{eq:policy}
+\end{equation}
+Validation tests $M\in\{0,5,10,20,40,80\}$. We select the smallest mean pool whose paired marginal 95\% lower confidence bound for Recall@10 relative to the full pool is at least $-0.005$, with a full-pool fallback. The selection rule is fixed before confirmation. Two controls choose products from the full historical catalog by frequency or by recency, using exactly the same candidate count as the selected policy for each user. Neither control uses target labels, and ties are deterministic.
+
+\subsection{Uncertainty and exact hit accounting}
+The main study prespecifies nine contrasts and uses 6,000 paired-user bootstrap replicates, reporting both marginal and Bonferroni simultaneous 95\% intervals. Final noninferiority requires the simultaneous lower bound for selected minus full recall to be at least $-0.005$, equivalent to $-0.5$ percentage points (pp). Validation is a selection stage; independent confirmation determines the final claim. Intervals condition on fitted models and do not include retraining uncertainty.
+
+Under fixed scores, enlarging a candidate pool can introduce correct recommendations and displace correct recommendations from the smaller pool. Let $L_{\mathrm{small}}$ and $L_{\mathrm{large}}$ be the two Top-$K$ lists for one user. Then
+\begin{align}
+ g_u&=|(L_{\mathrm{large}}\setminus L_{\mathrm{small}})\cap\R(u)|, &
+ \ell_u&=|(L_{\mathrm{small}}\setminus L_{\mathrm{large}})\cap\R(u)|,\nonumber\\
+ \Delta\Recall@K(u)&=\frac{g_u-\ell_u}{|\R(u)|}.
+ \label{eq:ledger}
+\end{align}
+Dividing each term by the same full target before averaging preserves exact additivity for macro recall. This ledger is an algorithmic accounting identity, not a causal model of shopper psychology.

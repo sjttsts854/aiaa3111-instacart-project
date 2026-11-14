@@ -12,6 +12,14 @@ The English closeout is in `final/`:
 - `Group_PENDING_Project_DRAFT.zip`: portable source, evidence, demo, Report.pdf, README and data-download instructions.
 - `START_HERE.html`: entry point for the deliverables and remaining team details.
 
+An editable **single-column LaTeX paper** is also available in `final/latex/`.
+Upload `final/Report_SingleColumn_LaTeX.zip` to Overleaf with `main.tex` as the
+main document, or compile it with a local TeX distribution. The bundle includes
+all sections, BibTeX references, and four vector PDF figures with high-resolution
+PNG copies. `final/Report_Figures.zip` contains the figures separately, and
+`final/Report_SingleColumn.pdf` is the locally compiled preview. This uses the
+standard `article` class, not a conference-specific or two-column style.
+
 These are team review drafts. Group number, names, IDs and actual student contributions are pending. Review the separate course template if one is issued, check the AI-use disclosure, and finalize the team's own interpretation before submission. No submission or publication has been performed.
 
 ## Main finding

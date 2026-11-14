@@ -1,0 +1,30 @@
+{
+  "format": "Single-column 11pt article; English",
+  "validation": "Source dependencies, citation keys, unique labels and figure paths verified",
+  "tex_files": 5,
+  "referenced_figures": [
+    "history_composition.pdf",
+    "factorial_memory.pdf",
+    "policy_contrasts.pdf",
+    "list_depth.pdf"
+  ],
+  "files": {
+    "figures/factorial_memory.pdf": "34e032dfe535d372e6a6ae7ca924c8c5437053b34dfa6f9e69249b8f568ee78f",
+    "figures/factorial_memory.png": "8c3065b24f3112a7aa539e1a9eae465f73fb173da6b8be56bd0adbb55752cdb5",
+    "figures/history_composition.pdf": "973cce5c445239ae7b1d3bdf0ad27fb98cee6e092548be3aa8dfad5fbd7c7803",
+    "figures/history_composition.png": "176f656e3146b51b99f441cd13b0253accc255b2be50b5f6c99625d86b7c2a8f",
+    "figures/list_depth.pdf": "58cad1a7b37a1c69a20edf1b8a256686fa15db23f8b4fed082ab6e5b2be5a85c",
+    "figures/list_depth.png": "417d15d3de3122ae00a020e68392765f587578d145896651d52d9725c3f37103",
+    "figures/policy_contrasts.pdf": "78747c7b9b0ee3107d14b7a7c6f579f6a2ba9670fad707ee3afd181eb3349f94",
+    "figures/policy_contrasts.png": "346e2d9badf2046a9742b699dab6870ee3f88ccfd7ec0288b35bedeb70c50ee5",
+    "figures/README.txt": "ed305c2cdbf28e1e4e9f2e826c336f09a57bf7638bdb3ca99fc76b4f755158d4",
+    "figures/source_hashes.json": "ae1d47e3ded0cdb91f3665d8706fa534db00dcb6e0f75493957b7958333b477a",
+    "main.tex": "c98185e0e9cf7689dce33a652905c75776ff84be68b26dfb6a644370602a926e",
+    "README.md": "f25f73691bbb71a6ca86d62821329af9e2269c9941824ba2166116fe5ea1f29b",
+    "references.bib": "4256e435059626817d9294ff422d39a88f51bba1f4cb327f93dc70bf6224aea6",
+    "sections/01_introduction.tex": "8e9fe2465bac6b1c6ae002d2749270482d505827d41354efb1a86ebc6c913118",
+    "sections/02_task_and_methods.tex": "92eb397ebdcd270f58e9d601fc3a57e3fac6faf6ea4b838677caea72f5f5b477",
+    "sections/03_results.tex": "49928b5cb2d3781f18e5b34201695e5caa2a61af6f08ee9595ab7f2c3e2ec633",
+    "sections/04_discussion.tex": "a52cfbd6edb7f5597d4c4675676335bc017930b99d7408414d4cd63e4e8f6595"
+  }
+}

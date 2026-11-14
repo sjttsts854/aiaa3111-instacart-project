@@ -1,0 +1,62 @@
+% Main document: single-column academic article, ready for pdfLaTeX + BibTeX.
+% In Overleaf, select main.tex as the main document and pdfLaTeX as compiler.
+% This is a course-project paper, not a CVPR submission.
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array}
+\usepackage{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\definecolor{linkblue}{RGB}{30,75,110}
+\usepackage[colorlinks=true,allcolors=linkblue,breaklinks=true]{hyperref}
+\hypersetup{
+  pdftitle={Shopping History and Candidate Competition in Next Basket Recommendation},
+  pdfauthor={AIAA3111 team details pending},
+  pdfsubject={Single-column course-project research paper}
+}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{1.25em}
+\renewcommand{\arraystretch}{1.15}
+\graphicspath{{figures/}}
+
+% Replace this author block with the actual group, members, and student IDs.
+\title{Shopping History and Candidate Competition\\
+in Next Basket Recommendation}
+\author{AIAA3111 Course Project\\
+\small Group number, member names, and student IDs to be completed}
+\date{\small Team review draft}
+
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\Uplus}{\mathcal{U}_{+}}
+\newcommand{\Recall}{\operatorname{Recall}}
+\newcommand{\TopItems}{\operatorname{Top}}
+\newcommand{\pp}{\,\text{pp}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Purchase histories provide both ranking signals and the catalog of products eligible for recommendation. We separate these roles in an Instacart repeat-purchase task while keeping users and true targets fixed. A fresh cohort contains 20,000 training, 5,000 validation, and 8,000 confirmation users. Among 2,526 long-history users with nonempty repeat targets, expanding the candidate pool from recent purchases to all historical products reduces Recall@10 by 3.29 percentage points under cumulative frequency but improves it by 0.47 points under time decay. A validation-selected policy retains products from the last five orders plus up to five older frequent products, reducing total candidate volume by 44.79\%. Its confirmation Recall@10 is 58.171\%, compared with 58.164\% for the full pool, meeting a prespecified 0.5-point noninferiority margin. Subsequent posthoc analysis finds unchanged mean recall for 99.45\% of eligible users. Excluded true targets mostly occupy low original ranks, and recall losses grow for longer recommendation lists. The contribution is a controlled empirical analysis of historical information, candidate competition, and the limits of selective retention.
+\end{abstract}
+
+\noindent\textbf{Keywords:} next-basket recommendation; repeat purchases; candidate selection; temporal information; evaluation.
+
+\input{sections/01_introduction}
+\input{sections/02_task_and_methods}
+\input{sections/03_results}
+\input{sections/04_discussion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
