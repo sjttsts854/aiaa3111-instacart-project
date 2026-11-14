@@ -1,0 +1,52 @@
+{
+  "generated_utc": "2026-11-14T09:59:23.108456+00:00",
+  "run": "autoresearch/research-v4",
+  "cache": "data/processed/study4",
+  "freeze_sha256": "2fb741e20f002b111cc1595e64fd28917d4265ddf2dd2c7b589da62588397679",
+  "freeze_utc": "2026-11-14T09:55:48.608564+00:00",
+  "selection_utc": "2026-11-14T09:55:25.157125+00:00",
+  "confirmation_started": {
+    "utc": "2026-11-14T09:55:53.304793+00:00",
+    "freeze_sha256": "2fb741e20f002b111cc1595e64fd28917d4265ddf2dd2c7b589da62588397679"
+  },
+  "confirmation_completed": {
+    "utc": "2026-11-14T09:56:27.367812+00:00",
+    "freeze_sha256": "2fb741e20f002b111cc1595e64fd28917d4265ddf2dd2c7b589da62588397679"
+  },
+  "audit_status": "PASS",
+  "frozen_file_count": 90,
+  "table_sha256": {
+    "policy_validation.csv": "e2fd963828262682d7df179ead8590d4342e270d6269042719f9c8fa211fde5a",
+    "confirmation_metrics.csv": "c5356e6203e4799628f0831972f5ce065326722bbd986d90ac8658f055d0b0a1",
+    "primary_contrasts.csv": "24ae4fb58bd40d0b24d3ad0b23769fece8cd03fd51ffecc912790b5cbd5ddb20",
+    "factorial_metrics.csv": "f104a98a770623377c973d45f38f30c8b42cda77ad1c19ee37b384e7e1faabe0",
+    "factorial_sensitivity.csv": "a5340857dc89a64c9241ecb29cbbd630e29b05f72e08b297d862c7d6ea126240",
+    "ledger_summary.csv": "65dcb9fbcb498c7e4cb32bd586e5e9cfbe7c6fe272edcec416d28ba21e3d98ba",
+    "candidate_curves.csv": "8dbc399044a9c4e04f44b064033f2f8594f36b1e9c65ba94bdc23db2b2b9d7a2",
+    "product_group_diagnostics.csv": "dc15d662611cf1ca2d5472fad876af05e3a87b43aa799eb1b85d34ac9f6ec7c2",
+    "task_scope.csv": "041dbe93f008c7545338c8e3a9d8e5e77c9bbc0960a75ba8274a33e5f37c1e22",
+    "k_sensitivity.csv": "9143c44c4e43ab003f8caef4455dbd8de5f43c97894ad7f54de6a7b641c63e59",
+    "history_raw_overall.csv": "bd3c9356608d522a99f04f9d2e92b47322ff83437290eeee39b994283f4e9aa6",
+    "history_sensitivity.csv": "25792758145f84eb4101f48d1e7390801f8a3f4fe16ff44c3bba458e206c6546",
+    "history_groups.csv": "beea24a7fdf68aac0ea8b5851865e2a30b9da403faf84049bb6a15d90dfcda62",
+    "history_cells.csv": "064d1a6486635ad5086f5f3e5340ded77027c7113f6e8a94f20b134989ec560d"
+  },
+  "table_sources": {
+    "policy_validation.csv": "autoresearch/research-v4/policy_validation.csv",
+    "confirmation_metrics.csv": "autoresearch/research-v4/confirmation/metrics.csv",
+    "primary_contrasts.csv": "autoresearch/research-v4/confirmation/primary_contrasts.csv",
+    "factorial_metrics.csv": "autoresearch/research-v4/confirmation/factorial_metrics.csv",
+    "factorial_sensitivity.csv": "autoresearch/research-v4/confirmation/factorial_sensitivity.csv",
+    "ledger_summary.csv": "autoresearch/research-v4/confirmation/ledger_summary.csv",
+    "candidate_curves.csv": "autoresearch/research-v4/confirmation/candidate_curves.csv",
+    "product_group_diagnostics.csv": "autoresearch/research-v4/confirmation/product_group_diagnostics.csv",
+    "task_scope.csv": "autoresearch/research-v4/confirmation/task_scope.csv",
+    "k_sensitivity.csv": "autoresearch/research-v4/confirmation/k_sensitivity.csv",
+    "history_raw_overall.csv": "autoresearch/research-v4/confirmation/history_observed/raw_overall.csv",
+    "history_sensitivity.csv": "autoresearch/research-v4/confirmation/history_observed/sensitivity.csv",
+    "history_groups.csv": "autoresearch/research-v4/confirmation/history_observed/groups.csv",
+    "history_cells.csv": "autoresearch/research-v4/confirmation/history_observed/cells.csv"
+  },
+  "seed_aggregation": "Metrics averaged within users across three fitted model seeds; not a prediction ensemble.",
+  "report_does_not_fit_select_or_rerun_confirmation": true
+}

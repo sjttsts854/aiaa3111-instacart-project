@@ -1,0 +1,99 @@
+{
+  "study": "ranking_memory_and_candidate_competition",
+  "approved_story": "More orders, harder next-basket prediction? What should a recommender forget?",
+  "excluded_sources": [
+    "data/processed/10k_seed42/splits.csv",
+    "data/processed/research_v2/splits.csv",
+    "data/processed/study3/splits.csv"
+  ],
+  "excluded_users": "data/processed/study4_excluded.csv",
+  "split_seed": 20261115,
+  "train_users": 20000,
+  "validation_users": 5000,
+  "confirmation_users": 8000,
+  "model_seeds": [
+    42,
+    73,
+    123
+  ],
+  "prediction_task": "next terminal basket repeat items within complete observed prior history; no next-order metadata",
+  "fixed_denominator": "R_full=terminal products intersect entire observed historical product catalog; NEVER restrict labels/denominator/users when pruning candidates",
+  "core_window": 5,
+  "sensitivity_windows": [
+    3,
+    10
+  ],
+  "decay": 0.8,
+  "primary_k": 10,
+  "sensitivity_k": [
+    5,
+    20
+  ],
+  "factorial_scoring": [
+    "frequency",
+    "decay"
+  ],
+  "factorial_primary_users": "history_orders>=16 and nonempty R_full; same users in every cell",
+  "factorial_cells": "ranking-information window recent5/all x eligible candidates recent5/all; complete historical catalog still known in all cells",
+  "history_observed_diagnostics": "candidate count alone or candidate count x historical mean basket size; min cell counts10/20; raw overall, raw common support and standardized; no future target size for primary strata",
+  "future_target_conditioning": "separate descriptive sensitivity only; never predictive input or evidence of causal history effect",
+  "dual_window": 5,
+  "dual_old_counts": [
+    0,
+    5,
+    10,
+    20,
+    40,
+    80
+  ],
+  "dual_ranking": "recent5 union top M old products by purchase_count descending, orders_since_purchase ascending, product_id ascending",
+  "matched_controls": "same per-user candidate count as chosen dual; choose allhistory highest frequency or most recent products; no target labels",
+  "secondary_diagnostics": "all predeclared M values with matched controls as descriptive confirmation curves, never reselect M; K5/20 for frozen policies; separate whole-basket scope and historical-product-group coverage",
+  "seed_aggregation": "mean metrics and paired per-user recalls across three fitted model seeds; not ensemble predictions; intervals condition on fitted models",
+  "practical_margin": 0.005,
+  "policy_selection": "fewest average validation candidates among dual variants with paired 95% bootstrap lower Recall@10 delta vs full >= -0.005; ties higher recall then smaller M; full-catalog fallback allowed; descriptive validation search, independent confirmation required",
+  "primary_contrasts": [
+    [
+      "frequency_information",
+      "long_history"
+    ],
+    [
+      "decay_information",
+      "long_history"
+    ],
+    [
+      "frequency_expansion",
+      "long_history"
+    ],
+    [
+      "decay_expansion",
+      "long_history"
+    ],
+    [
+      "frequency_interaction",
+      "long_history"
+    ],
+    [
+      "decay_interaction",
+      "long_history"
+    ],
+    [
+      "dual_vs_full",
+      "all_nonempty"
+    ],
+    [
+      "dual_vs_frequency_budget",
+      "all_nonempty"
+    ],
+    [
+      "dual_vs_recency_budget",
+      "all_nonempty"
+    ]
+  ],
+  "bootstrap_replicates": 6000,
+  "multiplicity": "paired user percentile bootstrap, marginal95 and Bonferroni simultaneous95 across9 contrasts",
+  "expansion_ledger": "under identical frozen scores, new candidate true hits minus displaced old true hits equals total hits change; divide by R_full per user for additive recall contributions",
+  "product_groups": "recent if age<5; dormant_repeat if age>=5 and purchase_count>=3; dormant_low_frequency otherwise; history-defined descriptive target coverage and hits",
+  "report_limits": "algorithmic offline contrasts not human-behavior causal effects; no new algorithm/SOTA/online speed claim; condition intervals on fitted models and selected support",
+  "stop_rule": "complete bounded validation, freeze, one fresh confirmation, independent audit, evidence report and story update; accept negative outcomes"
+}

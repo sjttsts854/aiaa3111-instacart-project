@@ -1,0 +1,28 @@
+{
+  "dataset": "study4_confirmation",
+  "specifications": 4,
+  "evaluable_specifications": 4,
+  "all_four_evaluable": true,
+  "users": 8000,
+  "nonempty_users": 7472,
+  "empty_target_users": 528,
+  "same_nonzero_direction_in_all_four": true,
+  "all_four_standardized_positive": true,
+  "all_four_standardized_ci_lower_positive": true,
+  "all_four_reversed_from_overall": true,
+  "all_four_reversed_within_common_support": true,
+  "standardized_delta_min": 0.04213438471955422,
+  "standardized_delta_max": 0.13149735481819147,
+  "retained_user_min": 3424,
+  "retained_user_max": 5970,
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20261115,
+  "conditioning_variables": [
+    "historical_candidate_count",
+    "historical_mean_basket_size"
+  ],
+  "future_target_size_used_for_strata": false,
+  "population": "users with nonempty next-order repeat targets; this is an outcome-based inclusion restriction",
+  "interval_scope": "marginal 95%; conditional on observed support, fixed pooled weights, fitted models, and per-cell sample sizes",
+  "interpretation": "descriptive historical-covariate standardization; no causal history effect and no preferred specification selection"
+}

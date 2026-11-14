@@ -242,6 +242,8 @@ def _raw_confirmation(cache, protocol):
                 orders_since_purchase=("age", "min"), decay_score=("weight", "sum")).reset_index()
     observed["history_orders"] = observed.user_id.map(maximum)
     observed["frequency"] = observed.purchase_count / observed.history_orders
+    basket_means = history.groupby(["user_id", "order_id"]).size().groupby("user_id").mean()
+    observed["basket_mean"] = observed.user_id.map(basket_means)
     index = pd.MultiIndex.from_frame(observed[KEYS])
     for window in [protocol["core_window"]] + protocol["sensitivity_windows"]:
         values = history.loc[history.age.lt(window)].groupby(KEYS).agg(
@@ -252,7 +254,7 @@ def _raw_confirmation(cache, protocol):
     assert "label" not in candidates
     candidates = candidates.loc[candidates.split.eq("confirm")].sort_values(KEYS)
     _check_pairs(candidates, observed)
-    for field in ["purchase_count", "orders_since_purchase", "history_orders", "frequency", "decay_score"]:
+    for field in ["purchase_count", "orders_since_purchase", "history_orders", "frequency", "decay_score", "basket_mean"]:
         np.testing.assert_allclose(candidates[field], observed[field], atol=1e-12, rtol=0)
     for window in [3, 5, 10]:
         np.testing.assert_array_equal(candidates[f"recent{window}_count"], observed[f"frequency_w{window}"])
@@ -363,8 +365,10 @@ def _verify_analysis(run, observed, pools, repeats, protocol):
             np.testing.assert_allclose(stored[field], actual[field], atol=1e-12, rtol=0, equal_nan=True,
                                        err_msg=f"{item['path']}: {field}")
     _verify_primary(dest, observed, protocol)
+    _verify_observed_history(dest, observed)
     return {"factorial_configurations_checked": len(expected), "fixed_score_ledgers_checked": len(ledgers),
-            "primary_contrasts_independently_bootstrapped": len(protocol["primary_contrasts"])}
+            "primary_contrasts_independently_bootstrapped": len(protocol["primary_contrasts"]),
+            "observed_history_specification_means_checked": 4}
 
 
 def _verify_primary(dest, observed, protocol):
@@ -399,3 +403,59 @@ def _verify_primary(dest, observed, protocol):
         assert bool(stored.loc[contrast, "positive_confirmed"]) == bool(actual["sim_low"] > 0)
         assert bool(stored.loc[contrast, "noninferiority_confirmed"]) == bool(actual["sim_low"] >= -protocol["practical_margin"])
         assert stored.loc[contrast, "noninferiority_margin"] == protocol["practical_margin"]
+
+
+def _verify_observed_history(dest, observed):
+    """Audit historical-only strata/support/means without importing their producer.
+
+    This additional check does not independently repeat the conditional history
+    bootstrap; only the nine primary comparison intervals are re-bootstrapped.
+    """
+    per = pd.read_parquet(dest / "full/users.parquet").set_index("user_id").sort_index()
+    info = observed.groupby("user_id").agg(history_orders=("history_orders", "first"),
+                                            basket_mean=("basket_mean", "first"),
+                                            candidates=("product_id", "size"))
+    details = per[["recall", "repeat_targets"]].join(info, validate="one_to_one")
+    details["group"] = np.select([details.history_orders.le(5), details.history_orders.le(15)],
+                                  ["3-5", "6-15"], default="16+")
+    output = dest / "history_observed"
+    raw = pd.read_csv(output / "raw_overall.csv").set_index("history_group")
+    for group, values in details.groupby("group"):
+        assert raw.loc[group, "users"] == len(values)
+        assert raw.loc[group, "nonempty_users"] == int(values.recall.notna().sum())
+        for field, value in {"recall": values.recall.mean(), "candidate_mean": values.candidates.mean(),
+                             "historical_basket_mean": values.basket_mean.mean()}.items():
+            np.testing.assert_allclose(raw.loc[group, field], value, atol=1e-12, rtol=0)
+    groups = pd.read_csv(output / "groups.csv").set_index(["specification", "history_group"])
+    summaries = pd.read_csv(output / "sensitivity.csv").set_index("specification")
+    valid = details.loc[details.repeat_targets.gt(0)].copy()
+    valid["candidate_bin"] = np.searchsorted([0, 20, 50, 100, 200, 1000000], valid.candidates, side="left") - 1
+    for with_basket, name in [(False, "candidate_only"), (True, "candidate_historical_basket")]:
+        valid["basket_bin"] = (np.searchsorted([0, 5, 10, 15, 25, 1000000], valid.basket_mean,
+                                                side="left") - 1 if with_basket else 0)
+        cells = {}
+        for (candidate, basket, group), values in valid.groupby(["candidate_bin", "basket_bin", "group"]):
+            cells.setdefault((candidate, basket), {})[group] = values.recall.to_numpy()
+        for minimum in [10, 20]:
+            specification = f"{name}_min{minimum}"
+            support = {key: values for key, values in cells.items()
+                       if all(len(values.get(group, [])) >= minimum for group in ["3-5", "6-15", "16+"])}
+            row = summaries.loc[specification]
+            assert row.eligible_cells == len(support)
+            total = sum(sum(len(values) for values in cell.values()) for cell in support.values())
+            assert row.retained_users == total
+            if not total:
+                assert pd.isna(row.standardized_long_minus_short)
+                continue
+            means, common = {}, {}
+            for group in ["3-5", "6-15", "16+"]:
+                joined = np.concatenate([cell[group] for cell in support.values()])
+                common[group] = joined.mean()
+                means[group] = sum(sum(len(values) for values in cell.values()) / total * cell[group].mean()
+                                   for cell in support.values())
+                target = groups.loc[(specification, group)]
+                assert target.retained_users == len(joined)
+                np.testing.assert_allclose(target.standardized_recall, means[group], atol=1e-12, rtol=0)
+                np.testing.assert_allclose(target.raw_common_support_recall, common[group], atol=1e-12, rtol=0)
+            np.testing.assert_allclose(row.standardized_long_minus_short, means["16+"] - means["3-5"], atol=1e-12, rtol=0)
+            np.testing.assert_allclose(row.raw_common_support_long_minus_short, common["16+"] - common["3-5"], atol=1e-12, rtol=0)

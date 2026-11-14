@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "frozen_files": 90,
+  "raw_source_files": 6,
+  "previous_users_excluded": 76000,
+  "previous_user_overlap": 0,
+  "confirmation_users": 8000,
+  "confirmation_candidate_rows": 519399,
+  "confirmation_target_rows": 84496,
+  "empty_repeat_targets": 528,
+  "validation_policy_variants_checked": 6,
+  "prediction_configurations_checked": 15,
+  "factorial_configurations_checked": 20,
+  "fixed_score_ledgers_checked": 8,
+  "primary_contrasts_independently_bootstrapped": 9,
+  "observed_history_specification_means_checked": 4,
+  "scope": "Frozen hashes/timestamps; disjoint users; raw chronology, full candidates and labels; history-only masks; independent validation selection; fixed full-target/user metrics including empty eligibility; exact rankings; seed means; matched per-user budgets; factorial and fixed-score ledgers"
+}

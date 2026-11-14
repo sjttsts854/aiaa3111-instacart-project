@@ -1,0 +1,10 @@
+{
+  "policy": {
+    "kind": "dual",
+    "window": 5,
+    "m": 5
+  },
+  "utc": "2026-11-14T09:55:25.157125+00:00",
+  "criterion": "fewest average validation candidates among dual variants with paired 95% bootstrap lower Recall@10 delta vs full >= -0.005; ties higher recall then smaller M; full-catalog fallback allowed; descriptive validation search, independent confirmation required",
+  "selected_before_confirmation": true
+}
