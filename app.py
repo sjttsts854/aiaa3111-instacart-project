@@ -48,6 +48,59 @@ def load_tables(cache_path, run_path, study, selected_name):
     }
 
 
+def show_memory_followup():
+    """Clearly separate posthoc explanations from the original confirmation."""
+    followup = ROOT / "autoresearch/research-v4-followup"
+    evidence = ROOT / "reports/study4_followup"
+    if not (followup / "completed.json").exists():
+        return
+    with st.expander("后续分析（事后）：哪些用户改变，长清单为什么损失更大？"):
+        st.info("本节使用已经看过的第四轮确认结果做后续分析，没有新增训练、重选参数或启用新的确认用户。区间和历史分组只帮助解释现象，不是新增的独立验证。")
+        changes = pd.read_csv(followup / "users/change_summary.csv").set_index("comparator")
+        overlap = pd.read_csv(followup / "users/overlap_summary.csv").set_index(["population", "comparator"])
+        full_change = changes.loc["full"]
+        all_full = overlap.loc[("all", "full")]
+        all_recent = overlap.loc[("all", "recency_budget")]
+        st.write(f"相对完整候选，在 {int(full_change.nonempty_users):,} 名有复购目标的用户中，三个模型的用户平均 Recall@10：{int(full_change.improved_users):,} 人改善、{int(full_change.harmed_users):,} 人受损、{int(full_change.unchanged_users):,} 人不变。另有 {int(full_change.empty_target_users):,} 名用户没有复购目标，不计入这三类 Recall 比例。")
+        st.caption("改善或受损由真实下一单揭晓后定义，不能据此提前识别适合哪种策略的用户。平均指标不变和每个模型都不变在分析中分别核对。")
+        columns = st.columns(3)
+        columns[0].metric("Recall 不变 · 非空目标用户", f"{full_change.unchanged_fraction:.2%}")
+        columns[1].metric("与完整候选同清单 · 三模型均一致", f"{all_full.top_all_seeds_ordered_identical_fraction:.2%}")
+        columns[2].metric("与同预算近期策略同清单 · 三模型均一致", f"{all_recent.top_all_seeds_ordered_identical_fraction:.2%}")
+        st.caption(f"后两项以全部 {int(all_full.users):,} 名用户为分母；要求三个模型分别生成的有序 Top10 清单都与各自对照一致，不是先平均清单或投票。Recall 相同也可能发生在商品清单不同的用户中。")
+        change_table = changes[["nonempty_users", "improved_users", "unchanged_users", "harmed_users", "gain_contribution", "loss_contribution", "mean_delta"]].copy()
+        change_table.index = change_table.index.to_series().replace({"full": "完整候选", "recency_budget": "同预算近期策略", "frequency_budget": "同预算频次策略", "recent": "仅最近5单"})
+        for field in ["gain_contribution", "loss_contribution", "mean_delta"]:
+            change_table[field] = (100 * change_table[field]).round(4)
+        change_table = change_table.rename(columns={"nonempty_users": "有复购目标用户", "improved_users": "改善人数", "unchanged_users": "不变人数", "harmed_users": "受损人数", "gain_contribution": "收益贡献（百分点）", "loss_contribution": "损失贡献（百分点）", "mean_delta": "平均变化（百分点）"})
+        st.dataframe(change_table)
+        st.caption("收益贡献和损失贡献都以全体非空目标用户为分母：收益 − 损失 = 平均变化。人数变化稀疏，不宜从很小的事后子组宣称个性化策略有效。")
+        st.write(f"同预算近期策略与选定方案都保留所有最近5单商品，差别集中在最多5件旧商品的选择。全部用户的候选集合平均 Jaccard 重合率为 {all_recent.candidate_mean_jaccard:.2%}；仅在旧候选并集非空的 {int(all_recent.candidate_old_union_nonempty_users):,} 人中，旧商品集合的平均 Jaccard 为 {all_recent.candidate_old_mean_jaccard:.2%}。两种比例的用户范围不同。")
+        st.caption("大部分近期候选相同、Top10 清单也高度相似，说明在当前固定模型下，旧候选的选法只有少量机会改变短清单。这不等于旧商品对用户不重要。")
+        for name in ["01_user_changes.png", "02_historical_subgroups.png"]:
+            path = evidence / "figures" / name
+            if path.exists():
+                st.image(str(path))
+        st.write("历史分组的图展示全部约定分箱，未挑选表现最好的组；各区间属于事后边际区间，不能把它们当作已确认的分组收益。")
+        depth = pd.read_csv(followup / "depth/contrasts.csv")
+        vs_full = depth.loc[depth.comparator.eq("full")].set_index("k")
+        depth_table = (100 * vs_full[["delta", "sim_low", "sim_high"]]).round(4).rename(columns={"delta": "事后 Recall 差异（百分点）", "sim_low": "事后同时区间下界", "sim_high": "事后同时区间上界"})
+        depth_table.index.name = "最多推荐件数 K"
+        st.dataframe(depth_table)
+        st.write(f"精简方案相对完整候选，在 K=30 时的 Recall 差为 {100 * vs_full.loc[30, 'delta']:+.4f} 个百分点，K=50 时为 {100 * vs_full.loc[50, 'delta']:+.4f} 个百分点。清单变长后，之前未进入前10名的被删目标开始影响召回。")
+        st.caption("本节同时区间校正了 6 个清单长度 × 2 个对照，但仍属于事后分析。不能仅凭 K=20 的点估计损失就宣布原定非劣检验失败，也不能把 Top10 的性能保留结论推广到所有清单长度。低排名是当前模型的结果，不代表商品没有价值。")
+        for name in ["03_list_depth.png", "04_target_ranks.png"]:
+            path = evidence / "figures" / name
+            if path.exists():
+                st.image(str(path))
+        report_path = evidence / "analysis.md"
+        if report_path.exists():
+            text = report_path.read_text(encoding="utf-8")
+            st.download_button("下载事后分析报告", text, file_name="shopping_memory_followup.md", mime="text/markdown")
+        else:
+            st.caption("事后数值分析已完成，报告与图正在整理。")
+
+
 def show_memory_study():
     """Render completed fourth-study evidence without presupposing pruning helps."""
     latest = ROOT / "autoresearch/research-v4"
@@ -190,6 +243,7 @@ def show_memory_study():
         st.download_button("下载购物记忆研究证据稿", story, file_name="research_story.md", mime="text/markdown")
     else:
         st.info("独立确认已完成，完整证据稿和研究图正在生成。上方数值直接来自已完成的确认结果。")
+    show_memory_followup()
 
 
 data = load_tables(str(cache),str(run),is_study,selected["name"])

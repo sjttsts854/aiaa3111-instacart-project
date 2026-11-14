@@ -1,0 +1,69 @@
+{
+  "study": "study4_posthoc_mechanism_and_scope",
+  "status": "posthoc analysis after Study 4 confirmation results were inspected; NOT a new independent confirmation or preregistration",
+  "question": "Who changes, why does a same-budget recency baseline remain competitive, and where does candidate pruning lose targets as K grows?",
+  "source_run": "autoresearch/research-v4",
+  "source_cache": "data/processed/study4",
+  "output": "autoresearch/research-v4-followup",
+  "policy": "Use frozen Study 4 selection without changes; no fitting, M selection, window search, new user data or changes to old experiment artifacts",
+  "fixed_targets": "All 8000 users remain; full-history next-basket repeat targets remain the denominator. Recall averages exclude 528 empty targets, with their count reported",
+  "seeds": [
+    42,
+    73,
+    123
+  ],
+  "seed_aggregation": "Average each user's metrics across the three fitted models, not a score ensemble or independent sample expansion",
+  "user_comparators": [
+    "full",
+    "recency_budget",
+    "frequency_budget",
+    "recent"
+  ],
+  "user_diagnostics": "Positive, zero and negative paired recall changes; additive population gain/loss contributions; same-budget candidate and top-K overlap, both ordered and unordered lists",
+  "history_groups": [
+    "3-5",
+    "6-15",
+    "16+"
+  ],
+  "candidate_bins": [
+    0,
+    20,
+    50,
+    100,
+    1000000
+  ],
+  "old_catalog_share_bins": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1.01
+  ],
+  "subgroup_caution": "Historical bins only. Positive/negative outcome-defined groups describe who changed after the fact, not deployable user-selection rules. Marginal intervals are exploratory; no search for a winning subgroup",
+  "depth_k": [
+    5,
+    10,
+    15,
+    20,
+    30,
+    50
+  ],
+  "depth_comparators": [
+    "full",
+    "recency_budget"
+  ],
+  "bootstrap_replicates": 2000,
+  "depth_bootstrap_replicates": 6000,
+  "bootstrap_seed": 20261116,
+  "depth_intervals": "Marginal 95% and Bonferroni simultaneous 95% over 12 K/comparator contrasts; exploratory posthoc even after adjustment",
+  "depth_ledger": "With scores fixed, dual minus full hits equals newly promoted retained true targets minus excluded full-top-K true targets; normalize each user by unchanged R_full",
+  "target_rank_bins": [
+    "1-10",
+    "11-20",
+    "21-50",
+    ">50"
+  ],
+  "rank_caution": "Rank is produced by the existing model. Low predicted rank or observed recall does not imply a product is unimportant or impossible to predict by another model",
+  "interpretation": "Offline algorithmic decomposition; no human behavioral causality, new-method superiority, measured runtime speedup, storage savings, or confirmed subgroup treatment policy",
+  "stop_rule": "Finish the stated diagnostics, independent output consistency audit, figures, Chinese narrative and demo update; accept similarities and losses without further model iteration"
+}

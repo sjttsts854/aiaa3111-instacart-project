@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "utc": "2026-11-14T13:07:08.534526+00:00",
+  "posthoc": true,
+  "source_input_files_unchanged": 71,
+  "original_frozen_files_unchanged": 90,
+  "confirmation_users": 8000,
+  "nonempty_repeat_target_users": 7472,
+  "input_manifest_sha256": "87f1e8ac5e9c3384d684ff8809629b8d8c2bd9076d6949333b31071ba1c5fd41",
+  "user_comparisons_checked": 4,
+  "seed_change_comparisons_checked": 12,
+  "historical_subgroup_means_checked": 44,
+  "top_overlap_seed_comparisons_checked": 12,
+  "candidate_budgets_and_all_users_checked": 8000,
+  "depth_seed_policy_configurations_checked": 54,
+  "old_seed_policy_k_records_reproduced": 27,
+  "depth_ledger_user_seed_k_sets_checked": 18,
+  "target_rank_partitions_checked": 3,
+  "depth_contrasts_independently_bootstrapped": 12,
+  "scope": "Saved fixed predictions and prior audited data; input hashes and posthoc timestamps; full-user/full-target denominators; individual signed changes; candidate and ordered/unordered top-K overlap; independent ranks, depth metrics and deletion/promotion accounting. No new raw-source audit, fitting or selection."
+}

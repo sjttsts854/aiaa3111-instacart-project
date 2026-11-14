@@ -12,15 +12,22 @@ from streamlit.testing.v1 import AppTest
 
 parser=argparse.ArgumentParser()
 parser.add_argument("--require-study4",action="store_true")
+parser.add_argument("--require-followup",action="store_true")
 args=parser.parse_args()
 root=Path(__file__).resolve().parents[1]
 latest=root/"autoresearch/research-v4"
 confirmation=latest/"confirmation"
 study4_ready=(confirmation/"completed.json").exists()
 report=root/"reports/study4"
-if args.require_study4:
+followup=root/"autoresearch/research-v4-followup"
+followup_report=root/"reports/study4_followup"
+followup_ready=(followup/"completed.json").exists()
+if args.require_study4 or args.require_followup:
     assert study4_ready,"Fourth-study confirmation is incomplete"
     assert (report/"research_story.md").exists(),"Fourth-study report is missing"
+if args.require_followup:
+    assert followup_ready,"Posthoc followup is incomplete"
+    assert (followup_report/"analysis.md").exists(),"Posthoc report is missing"
 run=root/"autoresearch/research-v2"
 selected=json.loads((run/"selection.json").read_text(encoding="utf-8"))["selected"]
 per=pd.read_parquet(run/"confirmation"/selected/"42/users.parquet")
@@ -74,10 +81,34 @@ if study4_ready:
     evidence.index=evidence.index.to_series().replace({"frequency":"累计频次 · 扩展到完整历史","decay":"近期加权 · 扩展到完整历史","learned_full":"学习模型 · 扩展到完整历史","learned_dual":"学习模型 · 扩展到选定策略"})
     evidence=(100*evidence).round(3).rename(columns={"new_true_recall":"新增命中贡献（百分点）","lost_old_true_recall":"挤出命中损失（百分点）","delta_recall":"净变化（百分点）"})
     pd.testing.assert_frame_equal(ledger,evidence)
-    if args.require_study4:
+    if args.require_study4 or args.require_followup:
         for name in ["01_observed_history.png","02_factorial_memory.png","03_primary_contrasts.png","04_expansion_ledger.png","05_budget_tradeoff.png"]:
             assert (report/"figures"/name).is_file(),f"Missing fourth-study figure: {name}"
         assert any(button.label=="下载购物记忆研究证据稿" for button in memory.get("download_button"))
+    if followup_ready:
+        changes=pd.read_csv(followup/"users/change_summary.csv").set_index("comparator")
+        overlap=pd.read_csv(followup/"users/overlap_summary.csv").set_index(["population","comparator"])
+        row=changes.loc["full"]
+        assert any("没有新增训练、重选参数或启用新的确认用户" in element.value for element in memory.info)
+        assert any(f"{int(row.improved_users):,} 人改善、{int(row.harmed_users):,} 人受损、{int(row.unchanged_users):,} 人不变" in element.value for element in memory.markdown)
+        assert shown_metrics["Recall 不变 · 非空目标用户"]==f"{row.unchanged_fraction:.2%}"
+        assert shown_metrics["与完整候选同清单 · 三模型均一致"]==f"{overlap.loc[('all','full'),'top_all_seeds_ordered_identical_fraction']:.2%}"
+        assert shown_metrics["与同预算近期策略同清单 · 三模型均一致"]==f"{overlap.loc[('all','recency_budget'),'top_all_seeds_ordered_identical_fraction']:.2%}"
+        changed_table=next(element.value for element in memory.dataframe if "改善人数" in element.value.columns)
+        assert changed_table.loc["完整候选","有复购目标用户"]==row.nonempty_users
+        assert changed_table.loc["完整候选","受损人数"]==row.harmed_users
+        assert changed_table.loc["完整候选","平均变化（百分点）"]==round(100*row.mean_delta,4)
+        depth=pd.read_csv(followup/"depth/contrasts.csv")
+        expected=depth.loc[depth.comparator.eq("full")].set_index("k")
+        expected=(100*expected[["delta","sim_low","sim_high"]]).round(4).rename(columns={"delta":"事后 Recall 差异（百分点）","sim_low":"事后同时区间下界","sim_high":"事后同时区间上界"})
+        expected.index.name="最多推荐件数 K"
+        shown_depth=next(element.value for element in memory.dataframe if "事后 Recall 差异（百分点）" in element.value.columns)
+        pd.testing.assert_frame_equal(shown_depth,expected)
+        assert any("不能仅凭 K=20 的点估计损失就宣布原定非劣检验失败" in element.value for element in memory.caption)
+        if args.require_followup:
+            for name in ["01_user_changes.png","02_historical_subgroups.png","03_list_depth.png","04_target_ranks.png"]:
+                assert (followup_report/"figures"/name).is_file(),f"Missing posthoc figure: {name}"
+            assert any(button.label=="下载事后分析报告" for button in memory.get("download_button"))
 else:
     assert any("第四轮独立确认尚未完成" in element.value for element in memory.info)
     assert not memory.metric
@@ -94,4 +125,6 @@ print(json.dumps({"status":"PASS","tabs":5,"case_study":"V2","case_confirmation_
                   "selected":selected,"empty_repeat_case":empty_user,
                   "study4_confirmation":"complete" if study4_ready else "pending",
                   "study4_result_branch_tested":study4_ready,
-                  "study4_report_required":args.require_study4},ensure_ascii=False))
+                  "study4_report_required":args.require_study4,
+                  "posthoc_followup_branch_tested":followup_ready,
+                  "posthoc_report_required":args.require_followup},ensure_ascii=False))
