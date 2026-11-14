@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="841mm" height="594mm" preserveAspectRatio="xMinYMin meet" viewBox="0 0 2383 1683" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="2383.9370078740158" height="1683.7795275590552"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1683)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="1439.7795275590552" width="2383.9370078740158" height="244.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,17%,25%); fill-rule: evenodd;"/>
+			<text x="66" y="1633.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(72%,85%,84%); stroke:none;" transform="translate(0,3267) scale(1,-1)">AIAA 3111 COURSE PROJECT</text>
+			<text x="2103.5034141240158" y="1633.7795275590552" style="font-family: Arial-Bold; font-size: 20px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,3267) scale(1,-1)">TEAM REVIEW DRAFT</text>
+			<text x="66" y="1546.7795275590552" style="font-family: Arial-Bold; font-size: 65px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,3093) scale(1,-1)">What should a grocery recommender remember?</text>
+			<text x="66" y="1491.7795275590552" style="font-family: Arial; font-size: 34px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2983) scale(1,-1)">Scoring history and candidate competition</text>
+			<text x="66" y="1454.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(84%,90%,91%); stroke:none;" transform="translate(0,2909) scale(1,-1)">Group, member names and student IDs: to be completed</text>
+			<rect x="66" y="1296.7795275590552" width="2251.9370078740158" height="117.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,95%,96%); fill-rule: evenodd;"/>
+			<text x="89" y="1373.7795275590552" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,2747) scale(1,-1)">Predict the next basket using previously purchased products [1]</text>
+			<text x="89" y="1335.7795275590552" style="font-family: Arial; font-size: 24px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,2671) scale(1,-1)">Disjoint users: 20,000 training, 5,000 validation, 8,000 confirmation; none used in earlier experiments.</text>
+			<text x="89" y="1303.7795275590552" style="font-family: Arial; font-size: 24px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,2607) scale(1,-1)">Recall@10 = hits / all repeat targets, averaged over 7,472 users; 528 have no repeat targets and undefined recall. Targets and users stay fixed.</text>
+			<path d="M 809.645669,1266.779528 L 809.645669,223.779528 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 1574.291339,1266.779528 L 1574.291339,223.779528 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="66" y="1226.7795275590552" style="font-family: Arial-Bold; font-size: 39px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,2453) scale(1,-1)">1</text>
+			<text x="115" y="1230.7795275590552" style="font-family: Arial-Bold; font-size: 31px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,2461) scale(1,-1)">Separate the roles of history</text>
+			<path d="M 66,1208.779528 L 788.645669,1208.779528 Z" style="stroke: rgb(6%,49%,45%); stroke-linecap: butt; stroke-width: 2;"/>
+			<rect x="66" y="1159.7795275590552" width="297.99902343750006" height="31.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(6%,49%,45%); fill-rule: evenodd;"/>
+			<text x="78" y="1168.7795275590552" style="font-family: Arial-Bold; font-size: 18px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2337) scale(1,-1)">INDEPENDENT CONFIRMATION</text>
+			<text x="66" y="1118.7795275590552" style="font-family: Arial; font-size: 26px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,2237) scale(1,-1)">Does older history help scoring, or change which products</text>
+			<text x="66" y="1083.7795275590552" style="font-family: Arial; font-size: 26px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,2167) scale(1,-1)">compete for the next ten places?</text>
+			<text x="66" y="1005.7795275590552" style="font-family: Arial; font-size: 23px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,2011) scale(1,-1)">Each cell: Recall@10 for the same 2,526 users with at least 16 prior</text>
+			<text x="66" y="975.7795275590552" style="font-family: Arial; font-size: 23px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1951) scale(1,-1)">orders and nonempty targets.</text>
+			<text x="66" y="917.7795275590552" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1835) scale(1,-1)">Purchase frequency</text>
+			<text x="451.7647291769192" y="885.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1771) scale(1,-1)">Eligible candidates</text>
+			<text x="370.8926184947096" y="856.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1713) scale(1,-1)">Recent 5</text>
+			<text x="612.6429433747539" y="856.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1713) scale(1,-1)">All history</text>
+			<text x="66" y="795.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1591) scale(1,-1)">Recent 5 scores</text>
+			<rect x="290.0" y="761.7795275590552" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,94%,93%); fill-rule: evenodd;"/>
+			<text x="357.0041907603346" y="789.7795275590552" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1579) scale(1,-1)">45.44%</text>
+			<rect x="539.3228346456692" y="761.7795275590552" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,94%,93%); fill-rule: evenodd;"/>
+			<text x="606.3270254060039" y="789.7795275590552" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1579) scale(1,-1)">45.77%</text>
+			<text x="66" y="712.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1425) scale(1,-1)">All-history scores</text>
+			<rect x="290.0" y="678.7795275590552" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(78%,87%,85%); fill-rule: evenodd;"/>
+			<text x="357.0041907603346" y="706.7795275590552" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1413) scale(1,-1)">46.55%</text>
+			<rect x="539.3228346456692" y="678.7795275590552" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,85%,81%); fill-rule: evenodd;"/>
+			<text x="606.3270254060039" y="706.7795275590552" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1413) scale(1,-1)">43.26%</text>
+			<text x="66" y="613.7795275590552" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1227) scale(1,-1)">Order-decayed frequency (0.8)</text>
+			<text x="451.7647291769192" y="581.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1163) scale(1,-1)">Eligible candidates</text>
+			<text x="370.8926184947096" y="552.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1105) scale(1,-1)">Recent 5</text>
+			<text x="612.6429433747539" y="552.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1105) scale(1,-1)">All history</text>
+			<text x="66" y="491.77952755905517" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,983) scale(1,-1)">Recent 5 scores</text>
+			<rect x="290.0" y="457.77952755905517" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,94%,93%); fill-rule: evenodd;"/>
+			<text x="357.0041907603346" y="485.77952755905517" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,971) scale(1,-1)">46.15%</text>
+			<rect x="539.3228346456692" y="457.77952755905517" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,94%,93%); fill-rule: evenodd;"/>
+			<text x="606.3270254060039" y="485.77952755905517" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,971) scale(1,-1)">46.49%</text>
+			<text x="66" y="408.77952755905517" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,817) scale(1,-1)">All-history scores</text>
+			<rect x="290.0" y="374.77952755905517" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(78%,87%,85%); fill-rule: evenodd;"/>
+			<text x="357.0041907603346" y="402.77952755905517" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,805) scale(1,-1)">48.05%</text>
+			<rect x="539.3228346456692" y="374.77952755905517" width="249.32283464566922" height="83.0" style="stroke: rgb(100%,100%,100%); stroke-linecap: butt; stroke-width: 1; fill: rgb(65%,80%,77%); fill-rule: evenodd;"/>
+			<text x="606.3270254060039" y="402.77952755905517" style="font-family: Arial-Bold; font-size: 34px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,805) scale(1,-1)">48.52%</text>
+			<text x="66" y="321.77952755905517" style="font-family: Arial-Bold; font-size: 22px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,643) scale(1,-1)">Expand candidates with all-history scores fixed</text>
+			<text x="66" y="263.77952755905517" style="font-family: Arial-Bold; font-size: 42px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,527) scale(1,-1)">-3.29 pp</text>
+			<text x="463.45511811023624" y="263.77952755905517" style="font-family: Arial-Bold; font-size: 42px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,527) scale(1,-1)">+0.47 pp</text>
+			<text x="66" y="231.77952755905517" style="font-family: Arial; font-size: 22px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,463) scale(1,-1)">Frequency</text>
+			<text x="463.45511811023624" y="231.77952755905517" style="font-family: Arial; font-size: 22px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,463) scale(1,-1)">Order-decayed</text>
+			<text x="830.6456692913385" y="1226.7795275590552" style="font-family: Arial-Bold; font-size: 39px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,2453) scale(1,-1)">2</text>
+			<text x="879.6456692913385" y="1230.7795275590552" style="font-family: Arial-Bold; font-size: 31px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,2461) scale(1,-1)">Preserve a short recommendation list</text>
+			<path d="M 830.645669,1208.779528 L 1553.291339,1208.779528 Z" style="stroke: rgb(6%,49%,45%); stroke-linecap: butt; stroke-width: 2;"/>
+			<rect x="830.6456692913385" y="1159.7795275590552" width="297.9990234375001" height="31.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(6%,49%,45%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="1168.7795275590552" style="font-family: Arial-Bold; font-size: 18px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2337) scale(1,-1)">INDEPENDENT CONFIRMATION</text>
+			<text x="830.6456692913385" y="1119.7795275590552" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,2239) scale(1,-1)">Selected on validation: recent-five-order products plus up to five</text>
+			<text x="830.6456692913385" y="1085.7795275590552" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,2171) scale(1,-1)">older products with the highest historical frequency.</text>
+			<text x="830.6456692913385" y="1041.7795275590552" style="font-family: Arial; font-size: 23px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,2083) scale(1,-1)">Fixed LightGBM scores [2]; three fitted seeds.</text>
+			<text x="830.6456692913385" y="948.7795275590552" style="font-family: Arial-Bold; font-size: 75px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,1897) scale(1,-1)">44.79%</text>
+			<text x="830.6456692913385" y="911.7795275590552" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1823) scale(1,-1)">fewer candidates in total</text>
+			<text x="830.6456692913385" y="873.7795275590552" style="font-family: Arial; font-size: 25px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1747) scale(1,-1)">Mean per user: 64.92 to 35.85</text>
+			<text x="830.6456692913385" y="845.7795275590552" style="font-family: Arial; font-size: 20px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1691) scale(1,-1)">Candidate means: 8,000 users; recall: 7,472 users.</text>
+			<rect x="830.6456692913385" y="792.7795275590552" width="722.6456692913385" height="44.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,17%,25%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="808.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,1617) scale(1,-1)">Candidate policy</text>
+			<text x="1236.3091694605068" y="808.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,1617) scale(1,-1)">Mean size</text>
+			<text x="1435.583819051427" y="808.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,1617) scale(1,-1)">Recall@10</text>
+			<rect x="830.6456692913385" y="744.7795275590552" width="722.6456692913385" height="48.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,95%,96%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="761.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1523) scale(1,-1)">Full history</text>
+			<text x="1258.3855854761318" y="760.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1521) scale(1,-1)">64.92</text>
+			<text x="1454.440752645177" y="760.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1521) scale(1,-1)">58.164%</text>
+			<rect x="830.6456692913385" y="696.7795275590552" width="722.6456692913385" height="48.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="713.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1427) scale(1,-1)">Recent only</text>
+			<text x="1258.3855854761318" y="712.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1425) scale(1,-1)">32.49</text>
+			<text x="1454.440752645177" y="712.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1425) scale(1,-1)">57.674%</text>
+			<rect x="830.6456692913385" y="648.7795275590552" width="722.6456692913385" height="48.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,94%,92%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="665.7795275590552" style="font-family: Arial-Bold; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1331) scale(1,-1)">Recent + old frequent</text>
+			<text x="1258.3855854761318" y="664.7795275590552" style="font-family: Arial-Bold; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1329) scale(1,-1)">35.85</text>
+			<text x="1454.440752645177" y="664.7795275590552" style="font-family: Arial-Bold; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1329) scale(1,-1)">58.171%</text>
+			<rect x="830.6456692913385" y="600.7795275590552" width="722.6456692913385" height="48.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="617.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1235) scale(1,-1)">Matched frequency</text>
+			<text x="1258.3855854761318" y="616.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1233) scale(1,-1)">35.85</text>
+			<text x="1454.440752645177" y="616.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1233) scale(1,-1)">57.980%</text>
+			<rect x="830.6456692913385" y="552.7795275590552" width="722.6456692913385" height="48.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,95%,96%); fill-rule: evenodd;"/>
+			<text x="842.6456692913385" y="569.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1139) scale(1,-1)">Matched recency</text>
+			<text x="1258.3855854761318" y="568.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1137) scale(1,-1)">35.85</text>
+			<text x="1454.440752645177" y="568.7795275590552" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,1137) scale(1,-1)">58.110%</text>
+			<text x="830.6456692913385" y="492.77952755905517" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,985) scale(1,-1)">Performance retention confirmed</text>
+			<text x="830.6456692913385" y="450.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,901) scale(1,-1)">Selected minus full: +0.007 pp. Simultaneous 95% CI [-0.066,</text>
+			<text x="830.6456692913385" y="416.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,833) scale(1,-1)">+0.071] pp.</text>
+			<text x="830.6456692913385" y="373.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,747) scale(1,-1)">The lower bound exceeds the prespecified -0.5 pp noninferiority</text>
+			<text x="830.6456692913385" y="339.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,679) scale(1,-1)">margin.</text>
+			<text x="830.6456692913385" y="293.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,587) scale(1,-1)">No confirmed advantage over full or matched-recency</text>
+			<text x="830.6456692913385" y="259.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,519) scale(1,-1)">candidates. Target coverage falls to 90.87%.</text>
+			<text x="1595.291338582677" y="1226.7795275590552" style="font-family: Arial-Bold; font-size: 39px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,2453) scale(1,-1)">3</text>
+			<text x="1644.291338582677" y="1230.7795275590552" style="font-family: Arial-Bold; font-size: 31px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,2461) scale(1,-1)">Find where pruning loses targets</text>
+			<path d="M 1595.291339,1208.779528 L 2317.937008,1208.779528 Z" style="stroke: rgb(6%,49%,45%); stroke-linecap: butt; stroke-width: 2;"/>
+			<rect x="1595.291338582677" y="1159.7795275590552" width="209.0185546875" height="31.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<text x="1607.291338582677" y="1168.7795275590552" style="font-family: Arial-Bold; font-size: 18px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2337) scale(1,-1)">POSTHOC ANALYSIS</text>
+			<text x="1595.291338582677" y="1077.7795275590552" style="font-family: Arial-Bold; font-size: 66px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,2155) scale(1,-1)">99.45%</text>
+			<text x="1595.291338582677" y="1041.7795275590552" style="font-family: Arial-Bold; font-size: 25px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,2083) scale(1,-1)">of 7,472 users keep the same Recall@10</text>
+			<text x="1595.291338582677" y="1002.7795275590552" style="font-family: Arial; font-size: 24px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,2005) scale(1,-1)">23 improve, 18 decline, 7,431 are unchanged.</text>
+			<text x="1595.291338582677" y="939.7795275590552" style="font-family: Arial-Bold; font-size: 28px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,1879) scale(1,-1)">Longer lists expose the coverage loss</text>
+			<path d="M 1678.291339,866.208099 L 2287.937008,866.208099 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1650.612139363927" y="857.2080989876266" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1714) scale(1,-1)">0</text>
+			<path d="M 1678.291339,801.922385 L 2287.937008,801.922385 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1643.618975301427" y="792.9223847019123" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1585) scale(1,-1)">-1</text>
+			<path d="M 1678.291339,737.63667 L 2287.937008,737.63667 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1643.618975301427" y="728.6366704161981" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1457) scale(1,-1)">-2</text>
+			<path d="M 1678.291339,673.350956 L 2287.937008,673.350956 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1643.618975301427" y="664.3509561304837" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1328) scale(1,-1)">-3</text>
+			<path d="M 1678.291339,609.065242 L 2287.937008,609.065242 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1643.618975301427" y="600.0652418447694" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1200) scale(1,-1)">-4</text>
+			<path d="M 1678.291339,544.779528 L 2287.937008,544.779528 Z" style="stroke: rgb(81%,85%,87%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1643.618975301427" y="535.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1071) scale(1,-1)">-5</text>
+			<path d="M 1678.291339,904.779528 L 1678.291339,544.779528 Z" style="stroke: rgb(29%,36%,40%); stroke-linecap: butt; stroke-width: 1.3;"/>
+			<path d="M 1678.291339,544.779528 L 2287.937008,544.779528 Z" style="stroke: rgb(29%,36%,40%); stroke-linecap: butt; stroke-width: 1.3;"/>
+			<path d="M 1678.291339,862.57549 L 1678.291339,868.878386 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1672.291339,862.57549 L 1684.291339,862.57549 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1672.291339,868.878386 L 1684.291339,868.878386 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="1672.451738973302" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">5</text>
+			<path d="M 1746.029746,861.179612 L 1746.029746,870.719798 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1740.029746,861.179612 L 1752.029746,861.179612 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1740.029746,870.719798 L 1752.029746,870.719798 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="1734.3505470629648" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">10</text>
+			<path d="M 1813.768154,850.697936 L 1813.768154,870.692602 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1807.768154,850.697936 L 1819.768154,850.697936 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1807.768154,870.692602 L 1819.768154,870.692602 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="1802.0889547620022" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">15</text>
+			<path d="M 1881.506562,832.981143 L 1881.506562,859.571927 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1875.506562,832.981143 L 1887.506562,832.981143 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 1875.506562,859.571927 L 1887.506562,859.571927 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="1869.82736246104" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">20</text>
+			<path d="M 2016.983377,760.457674 L 2016.983377,800.465524 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 2010.983377,760.457674 L 2022.983377,760.457674 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 2010.983377,800.465524 L 2022.983377,800.465524 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="2005.3041778591153" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">30</text>
+			<path d="M 2287.937008,578.809253 L 2287.937008,634.386786 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 2281.937008,578.809253 L 2293.937008,578.809253 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 2281.937008,634.386786 L 2293.937008,634.386786 Z" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="2276.2578086552658" y="513.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1027) scale(1,-1)">50</text>
+			<polyline points="1678.291 866.1253, 1746.03 866.6716, 1813.768 860.9459, 1881.507 846.4397, 2016.983 780.4445, 2287.937 607.2734" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 3; fill: None; fill-rule: evenodd;"/>
+			<circle cx="1678.291338582677" cy="866.1252500022081" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<circle cx="1746.0297462817148" cy="866.6716105066979" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<circle cx="1813.7681539807522" cy="860.9459469202588" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<circle cx="1881.50656167979" cy="846.4396934374362" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<circle cx="2016.9833770778653" cy="780.444473239787" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<circle cx="2287.9370078740158" cy="607.2734032971757" r="6" style="stroke: rgb(71%,32%,24%); stroke-linecap: butt; stroke-width: 1; fill: rgb(71%,32%,24%); fill-rule: evenodd;"/>
+			<text x="2030.9833770778653" y="800.444473239787" style="font-family: Arial-Bold; font-size: 23px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,1600) scale(1,-1)">-1.33 pp</text>
+			<text x="2187.0244102177658" y="570.2734032971757" style="font-family: Arial-Bold; font-size: 23px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,1140) scale(1,-1)">-4.03 pp</text>
+			<text x="1678.291338582677" y="915.7795275590552" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,1831) scale(1,-1)">Selected minus full recall (pp)</text>
+			<text x="1853.4828255720963" y="481.77952755905517" style="font-family: Arial; font-size: 22px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,963) scale(1,-1)">Recommendation length K</text>
+			<text x="1595.291338582677" y="452.77952755905517" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,905) scale(1,-1)">Intervals: 12 posthoc comparisons; six tested K values. No new fitting or</text>
+			<text x="1595.291338582677" y="424.77952755905517" style="font-family: Arial; font-size: 21px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,849) scale(1,-1)">policy selection.</text>
+			<text x="1595.291338582677" y="351.77952755905517" style="font-family: Arial-Bold; font-size: 42px;fill: rgb(71%,32%,24%); stroke:none;" transform="translate(0,703) scale(1,-1)">0.26%</text>
+			<text x="1785.291338582677" y="368.77952755905517" style="font-family: Arial; font-size: 24px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,737) scale(1,-1)">of excluded true targets were in the original</text>
+			<text x="1785.291338582677" y="337.77952755905517" style="font-family: Arial; font-size: 24px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,675) scale(1,-1)">Top10.</text>
+			<text x="1595.291338582677" y="261.77952755905517" style="font-family: Arial-Bold; font-size: 42px;fill: rgb(6%,49%,45%); stroke:none;" transform="translate(0,523) scale(1,-1)">95.54%</text>
+			<text x="1785.291338582677" y="278.77952755905517" style="font-family: Arial; font-size: 24px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,557) scale(1,-1)">were ranked after position 20 by the full model.</text>
+			<path d="M 66,203.779528 L 2317.937008,203.779528 Z" style="stroke: rgb(7%,17%,25%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="66" y="156.77952755905517" style="font-family: Arial-Bold; font-size: 27px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,313) scale(1,-1)">Takeaway</text>
+			<text x="231" y="157.77952755905517" style="font-family: Arial; font-size: 25px;fill: rgb(9%,17%,23%); stroke:none;" transform="translate(0,315) scale(1,-1)">The value of older products depends on scoring and recommendation length. Short-list retention does not make excluded demand unimportant.</text>
+			<text x="66" y="90.77952755905517" style="font-family: Arial-Bold; font-size: 20px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,181) scale(1,-1)">Scope</text>
+			<text x="148" y="90.77952755905517" style="font-family: Arial; font-size: 20px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,181) scale(1,-1)">First-time purchases excluded. Full history retained; no measured runtime/storage gain or causal claim. Seed metrics averaged per user, not scores.</text>
+			<text x="66" y="61.77952755905517" style="font-family: Arial-Bold; font-size: 18px;fill: rgb(7%,17%,25%); stroke:none;" transform="translate(0,123) scale(1,-1)">Evidence</text>
+			<text x="158" y="61.77952755905517" style="font-family: Arial; font-size: 18px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,123) scale(1,-1)">Primary contrasts: user-paired bootstrap, 6,000 draws, simultaneous 95% across 9 contrasts. Posthoc K contrasts use a separate family of 12.</text>
+			<text x="66" y="30.77952755905517" style="font-family: Arial; font-size: 17px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,61) scale(1,-1)">[1] Instacart (2017), Kaggle / Yasser H. mirror. [2] Ke et al., LightGBM (NeurIPS 2017). Context: Hu et al. (SIGIR 2020); Li et al., Reality Check (2023).</text>
+			<text x="66" y="7.779527559055168" style="font-family: Arial; font-size: 17px;fill: rgb(29%,36%,40%); stroke:none;" transform="translate(0,15) scale(1,-1)">AIGC assisted implementation, analysis and drafting. Team review, authorship details and final wording remain to be completed before submission.</text>
+		</g>
+	</g>
+</svg>

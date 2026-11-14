@@ -9,3 +9,5 @@ outputs/
 autoresearch/loop-*/
 autoresearch/research-*/
 .streamlit/
+final/package/
+final/*.zip

@@ -1,0 +1,6 @@
+[
+  {"id":"hu2020","authors":"Haoji Hu, Xiangnan He, Jinyang Gao, Zhi-Li Zhang","year":2020,"title":"Modeling Personalized Item Frequency Information for Next-basket Recommendation","publication":"SIGIR 2020, pp. 1071–1080","url":"https://arxiv.org/abs/2006.00556","code":"https://github.com/HaojiHu/TIFUKNN"},
+  {"id":"li2023","authors":"Ming Li, Sami Jullien, Mozhdeh Ariannezhad, Maarten de Rijke","year":2023,"title":"A Next Basket Recommendation Reality Check","publication":"arXiv:2109.14233v2","url":"https://arxiv.org/abs/2109.14233"},
+  {"id":"ke2017","authors":"Guolin Ke, Qi Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei Ye, Tie-Yan Liu","year":2017,"title":"LightGBM: A Highly Efficient Gradient Boosting Decision Tree","publication":"Advances in Neural Information Processing Systems 30","url":"https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html"},
+  {"id":"instacart2017","authors":"Instacart","year":2017,"title":"Instacart Market Basket Analysis data dictionary","url":"https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b","download_mirror":"https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset"}
+]

@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-11-14T13:54:00.397336+00:00",
+  "status": "PASS for prepared deliverables; team authorship and review pending",
+  "pdf_pages": {
+    "Report_Draft.pdf": 8,
+    "Defense_Guide.pdf": 6,
+    "Poster_Draft.pdf": 1
+  },
+  "poster_mm": [
+    841,
+    594
+  ],
+  "new_deliverables_language": "English",
+  "original_frozen_files_unchanged": {
+    "autoresearch/research-v4/freeze.json": 90,
+    "autoresearch/research-v4-followup/inputs.json": 71
+  },
+  "research_tests_passed": 108,
+  "portable_demo_checks": "PASS for users 17, 1872, 4350, 31433, 490; three persistent views",
+  "browser_qa": "Passed normal case with revealed repeat targets, persistent navigation and visible hit columns",
+  "visual_qa": "All report/guide pages and full poster plus column regions inspected",
+  "docx_renderer": "Installed Microsoft Word PDF export plus Poppler; bundled render_docx diagnosed missing soffice.exe",
+  "clean_full_data_retraining_performed_during_closeout": false,
+  "zip": {
+    "name": "Group_PENDING_Project_DRAFT.zip",
+    "files": 163,
+    "bytes": 6217654,
+    "sha256": "80e4f08abca0758e9864f5337c9e5df9d6c260f957ab0e231cef9024ef232401"
+  }
+}
