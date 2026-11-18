@@ -63,12 +63,14 @@ def main():
 <p>The completed research asks how old purchases should inform product scores and candidate eligibility. A smaller pool retained average Top 10 recall within a prespecified tolerance, while longer lists exposed the lost target coverage.</p>
 <h2>Read and edit the deliverables</h2>
 <table><thead><tr><th>Deliverable</th><th>Ready to read</th><th>Editable version</th></tr></thead><tbody>
-<tr><td>Research report · 8 pages</td><td><a href="Report_Draft.pdf">Report PDF</a></td><td><a href="Report_Draft.docx">Word document</a></td></tr>
+<tr><td>Latest single-column paper · 11 pages</td><td><a href="Report_SingleColumn.pdf">Paper PDF</a></td><td><a href="Report_SingleColumn_LaTeX.zip">LaTeX ZIP for Overleaf</a> · <a href="latex/main.tex">Main source</a></td></tr>
+<tr><td>Paper figures · vector PDF and PNG</td><td><a href="Report_Figures.zip">Figure bundle</a></td><td><a href="latex/figures/README.txt">Figure descriptions</a></td></tr>
+<tr><td>Earlier Word report · 8 pages</td><td><a href="Report_Draft.pdf">Report PDF</a></td><td><a href="Report_Draft.docx">Word document</a></td></tr>
 <tr><td>Academic poster · A1 landscape</td><td><a href="Poster_Draft.pdf">Poster PDF</a></td><td><a href="Poster_Draft.svg">Vector SVG</a></td></tr>
 <tr><td>Defense and rehearsal guide · 6 pages</td><td><a href="Defense_Guide.pdf">Guide PDF</a></td><td><a href="Defense_Guide.docx">Word document</a></td></tr>
-<tr><td>Portable project · source and evidence</td><td><a href="Group_PENDING_Project_DRAFT.zip">Download ZIP</a></td><td><a href="package/README.md">Package README</a></td></tr>
+<tr><td>Portable project · source and evidence</td><td><a href="Group_PENDING_Project_DRAFT.zip">Download ZIP</a></td><td>Extract the ZIP and open its README.md</td></tr>
 </tbody></table>
-<p>The ZIP contains Report.pdf, source code, compact real examples, evidence tables, README and data-download instructions. The poster is separate, as indicated in the provided course guide. Raw data, fitted models and large caches are excluded.</p>
+<p>The portable project ZIP contains the earlier eight-page Report.pdf, source code, compact real examples, evidence tables, README and data-download instructions. The latest single-column paper and its editable source are separate downloads above. The poster is separate, as indicated in the provided course guide. Raw data, fitted models and large caches are excluded.</p>
 <h2>Run the English evidence demo</h2>
 <p>Extract the ZIP, then follow its README for the lightweight demo environment. From the extracted folder, run <code>python -m streamlit run evidence_app.py</code>. It displays frozen outputs for all 8,000 Study 4 confirmation users and performs no model fitting.</p>
 <p>Try user 17 for the repeat-versus-whole-basket distinction, 4350 for an improvement, 31433 for harm, and 490 for an empty repeat target. These are illustrative single-model cases. The report averages each user's metrics across three fitted seeds.</p>
@@ -81,7 +83,7 @@ def main():
 <ol><li>Add the actual group number, names, student IDs and individual contributions.</li>
 <li>Read, understand and revise the final wording as a team; verify the cited sources and retain an accurate AI-use disclosure.</li>
 <li>Check any separately issued report template, poster dimensions, naming rules or presentation timing. The supplied demo guide specifies 6–10 report pages but does not settle all of these details.</li>
-<li>Remove draft status only after the team completes its review. Nothing has been submitted or published.</li></ol>
+<li>Remove draft status only after the team completes its review. Repository sharing does not constitute course submission or peer-reviewed publication.</li></ol>
 <footer><small>Primary confirmation and posthoc interpretation remain clearly separated. Candidate count reduction is not a measured runtime saving. See <a href="verification.json">verification record</a> and <a href="SHA256SUMS.txt">file hashes</a>.</small></footer></body></html>'''
     (FINAL / "START_HERE.html").write_text(html, encoding="utf-8")
     for href in re.findall(r'href="([^"]+)"', html):

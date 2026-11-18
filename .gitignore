@@ -11,3 +11,6 @@ autoresearch/research-*/
 .streamlit/
 final/package/
 final/*.zip
+!final/Group_PENDING_Project_DRAFT.zip
+!final/Report_SingleColumn_LaTeX.zip
+!final/Report_Figures.zip

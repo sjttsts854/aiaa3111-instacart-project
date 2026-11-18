@@ -6,10 +6,12 @@ AIAA3111 data-mining final project using Instacart next-basket repeat purchases.
 
 The English closeout is in `final/`:
 
-- `Report_Draft.docx` and `Report_Draft.pdf`: eight-page research report.
+- [Single-column report PDF](final/Report_SingleColumn.pdf) and [editable LaTeX source](final/latex/main.tex): the latest paper-format report.
+- [Overleaf-ready LaTeX ZIP](final/Report_SingleColumn_LaTeX.zip) and [figure bundle](final/Report_Figures.zip): downloadable source and illustrations.
+- `Report_Draft.docx` and `Report_Draft.pdf`: earlier eight-page Word-format research report.
 - `Poster_Draft.svg` and `Poster_Draft.pdf`: editable A1 landscape academic poster.
 - `Defense_Guide.docx` and `Defense_Guide.pdf`: opening script, poster walkthrough, questions and answers, and team review checklist.
-- `Group_PENDING_Project_DRAFT.zip`: portable source, evidence, demo, Report.pdf, README and data-download instructions.
+- [Portable project ZIP](final/Group_PENDING_Project_DRAFT.zip): source, evidence, demo, the earlier eight-page Report.pdf, README and data-download instructions.
 - `START_HERE.html`: entry point for the deliverables and remaining team details.
 
 An editable **single-column LaTeX paper** is also available in `final/latex/`.
@@ -20,7 +22,9 @@ PNG copies. `final/Report_Figures.zip` contains the figures separately, and
 `final/Report_SingleColumn.pdf` is the locally compiled preview. This uses the
 standard `article` class, not a conference-specific or two-column style.
 
-These are team review drafts. Group number, names, IDs and actual student contributions are pending. Review the separate course template if one is issued, check the AI-use disclosure, and finalize the team's own interpretation before submission. No submission or publication has been performed.
+On a GitHub ZIP file page, use **Download raw file** to save the archive. Extract the portable project ZIP to a separate folder before following its README; its extracted `final/package/` working copy is not stored in Git.
+
+These are team review drafts. Group number, names, IDs and actual student contributions are pending. Review the separate course template if one is issued, check the AI-use disclosure, and finalize the team's own interpretation before submission. Repository sharing does not constitute course submission or peer-reviewed publication.
 
 ## Main finding
 
@@ -44,19 +48,19 @@ Candidate filtering occurred after full model scoring. No runtime or storage sav
 | `reports/study4/tables/` | Main confirmation results and observed-history diagnostics |
 | `reports/study4_followup/tables/` | Posthoc evidence |
 | `closeout/` | English artifact and portable package builders |
-| `final/package/` | Extracted portable package and English evidence demo |
+| `final/Group_PENDING_Project_DRAFT.zip` | Portable package, reproduction instructions and English evidence demo; extract before use |
 
 Older research narrative files remain in their original language for traceability. The new report, poster, rehearsal guide, package README and evidence app are English.
 
 ## Quick evidence demo
 
-Use the portable package README for its minimal demo installation, integrity check and launch commands. The app uses frozen Study 4 predictions and includes all 8,000 confirmation users. Individual cases show seed 42; report aggregates average per-user metrics across three seeds. It performs no live training.
+Download and extract [the portable project ZIP](final/Group_PENDING_Project_DRAFT.zip), then use its README for the minimal demo installation, integrity check and launch commands. The app uses frozen Study 4 predictions and includes all 8,000 confirmation users. Individual cases show seed 42; report aggregates average per-user metrics across three seeds. It performs no live training.
 
-The existing root `app.py` and `run_demo.ps1` are historical research interfaces, including older Study 2 cases. Use `final/package/evidence_app.py` for the final English demonstration.
+The existing root `app.py` and `run_demo.ps1` are historical research interfaces, including older Study 2 cases. Use `evidence_app.py` in the extracted portable package for the final English demonstration.
 
 ## Reproduction and checks
 
-The package README gives the exact commands for a clean data preparation and research rerun. Raw CSV files, model caches, the original frozen run directory and the Python environment are deliberately excluded from the portable archive. The data source is the [Instacart Kaggle mirror](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset). Extract its six original CSVs to `archive/` as described in the package.
+The extracted package's `README.md`, `DATA.md` and `REPRODUCE.md` give the exact commands for clean data preparation and a research rerun. Raw CSV files, model caches, the original frozen run directory and the Python environment are excluded from both this repository and the portable archive. The data source is the [Instacart Kaggle mirror](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset). Extract its six original CSVs to `archive/` as described in the package.
 
 On this original workspace, full data and frozen runs are available. Audit them without retraining:
 
