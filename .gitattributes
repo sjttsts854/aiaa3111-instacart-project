@@ -1,0 +1,2 @@
+# Preserve exported artifact bytes so the shipped SHA-256 manifests remain valid.
+final/** -text
